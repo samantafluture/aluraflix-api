@@ -12,8 +12,8 @@
 ### Bancos de dados
 
 - [x] Tabela Categorias (id, titulo, cor)
-- [ ] Tabela Videos (id, titulo, descricao, url)
-- [ ] Relação de associação (foreign kay "categoria_id" na tabela Videos)
+- [x] Tabela Videos (id, titulo, descricao, url)
+- [x] Relação de associação (foreign kay "categoria_id" na tabela Videos)
 
 ### Rotas
 
@@ -25,11 +25,11 @@
 - [x] delete/categorias/:id
 
 1. Videos
-- [ ] get/videos
-- [ ] get/videos/:id
-- [ ] post/videos
-- [ ] put/videos/:id
-- [ ] delete/videos/:id
+- [x] get/videos
+- [x] get/videos/:id
+- [x] post/videos
+- [x] put/videos/:id
+- [x] delete/videos/:id
 
 3. Relações
 - [ ] Agrupar vídeos e categorias; para cada vídeo, uma categoria

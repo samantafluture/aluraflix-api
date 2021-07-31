@@ -103,9 +103,41 @@ Esta coluna "categoria_id" não poderá ser nula, será do tipo int e irá refer
 | createdAt | datetime     | NO   |     | NULL    |                |
 | updatedAt | datetime     | NO   |     | NULL    |                |
 +-----------+--------------+------+-----+---------+----------------+
-````
+```
 
+## Popular tabela Videos
 
+Vamos popular a tabela Videos com dados de teste para que possam criar as rotas.
 
+1. Gerar o seed pelo Sequelize:
+
+`npx sequelize-cli seed:generate --name demo-video`
+
+2. Adicionar no arquivo demo seeders/...demo-video.js os dados em suas respectivas colunas
+
+3. Rodar no terminar: 
+
+`npx sequelize-cli db:seed:all`
+
+## Rotas do modelo Videos
+
+1. Copiar e colar as rotas do modelo Categorias para o modelo Videos, lembrando de criar um Service e um Controller para ele, além do arquivod e rotas
+
+* **services/VideoServices.js**: extender da classe Services
+
+* **controllers/VideoController.js**: métodos semelhantes ao de categoria
+
+* **routes/videosRoute.js**: rotas semelhantes as de categoria
+
+2. Importar o arquivo de rota do vídeo no routes/index.js e torná-lo disponível para uso. Fazer o mesmo no services/index.js
+
+```javascript
+const bodyParser = require("body-parser");
+const categorias = require("./categoriasRoute");
+const videos = require("./videosRoute");
+module.exports = (app) => {
+  app.use(bodyParser.json(), categorias, videos);
+};
+```
 
 
