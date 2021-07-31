@@ -14,14 +14,14 @@
 - [ ] Tabela Videos (id, titulo, descricao, url)
 - [ ] Relação de associação (foreign kay "categoria_id" na tabela Videos)
 
-### Rotas categ
+### Rotas
 
 1. Categorias
 - [x] get/categorias
 - [x] get/categorias/:id
-- [ ] post/categorias
-- [ ] put/categorias/:id
-- [ ] delete/categorias/:id
+- [x] post/categorias
+- [x] put/categorias/:id
+- [x] delete/categorias/:id
 
 1. Videos
 - [ ] get/videos
