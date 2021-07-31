@@ -10,6 +10,20 @@ class CategoriaController {
       return res.status(500).json(error.message);
     }
   }
+
+  static async pegaUmaCategoria(req, res) {
+    const { id } = req.params;
+    try {
+      const categoria = await categoriasServices.pegaUmRegistro({ id });
+      if (categoria === null) {
+        return res.status(200).json({ mensagem: `categoria ${id} não existe` });
+      } else {
+        return res.status(200).json(categoria);
+      }
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
 }
 
 module.exports = CategoriaController;

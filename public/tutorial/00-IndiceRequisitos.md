@@ -18,7 +18,7 @@
 
 1. Categorias
 - [x] get/categorias
-- [ ] get/categorias/:id
+- [x] get/categorias/:id
 - [ ] post/categorias
 - [ ] put/categorias/:id
 - [ ] delete/categorias/:id
