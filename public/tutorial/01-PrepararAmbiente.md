@@ -1,17 +1,6 @@
-# API Rest com Node.js, Express, Sequelize e MySQL
+# Preparar do Ambiente
 
-## Tecnologias
-
-- Node.js
-- NPM
-- Express
-- Sequelize
-- MySQL 
-- Postman
-
-## Preparar do Ambiente
-
-### Instalar pacotes e dependências
+## Instalar pacotes e dependências
 
 1. Iniciar projeto com npm: `npm init -y`
 2. Instalar express: `npm install express`
@@ -20,7 +9,7 @@
 5. Instalar biblioteca nodemon como dependência de desenvolvimento: `npm install --save-dev nodemon`
 6. Adicionar no package.json um script para chamar o nodemon de forma automática: `"start": "nodemon ./api/index.js"`
 
-### Conectar com Express
+## Conectar com Express
 
 1. Criar pasta com arquivo dentro: api/index.js
 2. Criar uma rota de conexão teste
@@ -35,7 +24,7 @@ module.exports = app;
 ```
 3. Rodar `npm start` no terminal para colocar a app no ar
 
-### Instalar Banco de Dados & ORM
+## Instalar Banco de Dados & ORM
 
 1. Instalar o banco de dados MySQL: `npm install mysql2`
 2. Instalar o Sequelize com duas dependências (linha de comando do ORM e path): `npm install sequelize sequelize-cli path`
@@ -68,37 +57,9 @@ module.exports = {
 }
 ```
 
-### Conectar com Banco de Dados
+## Conectar com Banco de Dados
 
 1. No terminal, se conectar com o banco MySQL com seu usuário (aqui será root e depois sua senha): `sudo mysql -u root -p`
 2. Criar a database do projeto: `create database aluraflix;`
 3. Visualizar se a database foi criada: `show databases;`
 4. Conectar a database com o projeto alterando o arquivo config.json, incluindo seu `username`, `password` e `database` usados na área de `development`
-
-## Modelos
-
-|    | Categorias |        |
-|----|------------|--------|
-| PK | ID         | int    |
-|    | titulo     | string |
-|    | cor        | string |
-
-|    | Videos       |        |
-|----|--------------|--------|
-| PK | ID           | int    |
-|    | titulo       | string |
-|    | descricao    | string |
-|    | url          | string |
-| FK | categoria_id | ID     |
-
-## Validações
-
-- Todos os campos são obrigatórios e precisam ser preenchidos
-
-## API no ar
-
-Acesse [/categorias](http://localhost:3000/categorias) no seu localhost.
-
-### Rotas
-
-- [ ] Em construção
