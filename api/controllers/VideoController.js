@@ -28,9 +28,7 @@ class VideoController {
   static async criaVideo(req, res) {
     const novoVideo = req.body;
     try {
-      const novoVideoCriado = await videosServices.criaRegistro(
-        novoVideo
-      );
+      const novoVideoCriado = await videosServices.criaRegistro(novoVideo);
       return res.status(200).json(novoVideoCriado);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -42,9 +40,7 @@ class VideoController {
     const infosAtualizadas = req.body;
     try {
       await videosServices.atualizaRegistro(infosAtualizadas, id);
-      return res
-        .status(200)
-        .json({ mensagem: `vídeo ${id} atualizado` });
+      return res.status(200).json({ mensagem: `vídeo ${id} atualizado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }
@@ -54,7 +50,20 @@ class VideoController {
     const { id } = req.params;
     try {
       await videosServices.apagaRegistro(id);
-      return res.status(200).json({mensagem: `vídeo ${id} removido`})
+      return res.status(200).json({ mensagem: `vídeo ${id} removido` });
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  static async pegaVideosPorCategoria(req, res) {
+    const { categoriaId } = req.params;
+    try {
+      const todosOsVideos = await videosServices.encontraEContaRegistros(
+        { categoria_id: Number(categoriaId) },
+        { limit: 20, order: [["titulo", "ASC"]] }
+      );
+      return res.status(200).json(todosOsVideos);
     } catch (error) {
       return res.status(500).json(error.message);
     }

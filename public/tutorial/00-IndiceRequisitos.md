@@ -32,8 +32,8 @@
 - [x] delete/videos/:id
 
 3. Relações
-- [ ] Agrupar vídeos e categorias; para cada vídeo, uma categoria
-- [ ] Exibir vídeo por categoria: categorias/:id/videos/    
+- [x] Agrupar vídeos e categorias; para cada vídeo, uma categoria
+- [x] Exibir vídeo por categoria: categorias/:id/videos/    
 
 4. Buscas
 - [ ] Busca de vídeo por título: /videos/?search=titulo
@@ -50,7 +50,7 @@
 
 ### Testes
 
-- [ ] Testar rotas via Postman
+- [x] Testar rotas via Postman
 - [ ] Testes unitários para modelos e controllers
 - [ ] Testes de integração
 

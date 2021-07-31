@@ -42,9 +42,7 @@ class CategoriaController {
     const infosAtualizadas = req.body;
     try {
       await categoriasServices.atualizaRegistro(infosAtualizadas, id);
-      return res
-        .status(200)
-        .json({ mensagem: `categoria ${id} atualizada` });
+      return res.status(200).json({ mensagem: `categoria ${id} atualizada` });
     } catch (error) {
       return res.status(500).json(error.message);
     }
@@ -54,7 +52,7 @@ class CategoriaController {
     const { id } = req.params;
     try {
       await categoriasServices.apagaRegistro(id);
-      return res.status(200).json({mensagem: `categoria ${id} removida`})
+      return res.status(200).json({ mensagem: `categoria ${id} removida` });
     } catch (error) {
       return res.status(500).json(error.message);
     }
