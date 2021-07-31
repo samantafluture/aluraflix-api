@@ -5,6 +5,7 @@
 1. Preparar do Ambiente
 2. Criar modelos e pouplar banco de dados
 3. Criar services, controllers e rotas
+4. Criar novas tabelas e associações
 
 ## Requisitos
 
