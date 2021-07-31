@@ -9,7 +9,7 @@
 - MySQL 
 - Postman
 
-## Preparar do Ambiente
+## Preparar o ambiente
 
 ### Instalar pacotes e dependências
 
@@ -20,7 +20,7 @@
 5. Instalar biblioteca nodemon como dependência de desenvolvimento: `npm install --save-dev nodemon`
 6. Adicionar no package.json um script para chamar o nodemon de forma automática: `"start": "nodemon ./api/index.js"`
 
-### Conectar com Express
+### Conectar com express
 
 1. Criar pasta com arquivo dentro: api/index.js
 2. Criar uma rota de conexão teste
@@ -35,7 +35,7 @@ module.exports = app;
 ```
 3. Rodar `npm start` no terminal para colocar a app no ar
 
-### Instalar Banco de Dados & ORM
+### Instalar banco de dados e ORM
 
 1. Instalar o banco de dados MySQL: `npm install mysql2`
 2. Instalar o Sequelize com duas dependências (linha de comando do ORM e path): `npm install sequelize sequelize-cli path`
@@ -68,7 +68,7 @@ module.exports = {
 }
 ```
 
-### Conectar com Banco de Dados
+### Conectar com banco de dados
 
 1. No terminal, se conectar com o banco MySQL com seu usuário (aqui será root e depois sua senha): `sudo mysql -u root -p`
 2. Criar a database do projeto: `create database aluraflix;`
