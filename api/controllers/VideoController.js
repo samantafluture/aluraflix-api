@@ -1,10 +1,16 @@
 const Services = require("../services/Services");
 const videosServices = new Services("Videos");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 class VideoController {
   static async pegaTodosOsVideos(req, res) {
+    const { search } = req.query;
+    const where = {};
+    search ? (where.titulo = {}) : null;
+    search ? (where.titulo[Op.substring] = search) : null;
     try {
-      const todosOsVideos = await videosServices.pegaTodosOsRegistros();
+      const todosOsVideos = await videosServices.pegaTodosOsRegistros(where);
       return res.status(200).json(todosOsVideos);
     } catch (error) {
       return res.status(500).json(error.message);

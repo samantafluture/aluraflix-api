@@ -54,3 +54,43 @@ O resultado traz dois objetos:
 
 ## Habilitar busca de vídeo por título
 
+Queremos atender ao requisito: buscar vídeo por título usando a rota `/videos/?search=titulo`.
+
+Para isso, vamos passar a busca via parâmetro de query, por query strings, aberto pelo `?`e contatenando parâmetros com `&`.
+
+Podemos usar operadores (palavras reservados que o Sequelize também possui). Um deles, que se encaixa na busca, é o `[[Op.substring]`.
+
+1. No /controllers/VideoControler.js, importar Operadores do Sequelize
+
+```javascript
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
+```
+
+2. Vamos reescrever o método "pegaTodosOsVideos()" com o filtro de busca, funcionando com ou sem a query de busca
+
+```javascript
+static async pegaTodosOsVideos(req, res) {
+    const { search } = req.query;
+    const where = {};
+    search ? (where.titulo = {}) : null;
+    search ? (where.titulo[Op.substring] = search) : null;
+    try {
+      const todosOsVideos = await videosServices.pegaTodosOsRegistros(where);
+      return res.status(200).json(todosOsVideos);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+```
+
+No código acima, usamos o parâmetro "search" para ser aquele que será adicionado na URL. 
+
+O método checa se este parâmetro foi passado pelo usuário. Se sim, então ele compara o que foi passado com o título do vídeo e traz os vídeos que contém esta "subtring" em seus títulos. Se não houver houver vídeo com esta "substring", retorna um array vazio.
+
+Caso não seja passado o parâmetro "search", então o método retornará todos os vídeos da tabela.
+
+4. Manter a rota "/videos" como get no /routes/videosRoute.js
+
+5. Na hora de testar no Postman, usar a rota: `/videos/search=titulo`, sendo `titulo` uma string/palavra-chave passada pelo usuário
+

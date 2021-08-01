@@ -36,7 +36,7 @@
 - [x] Exibir vídeo por categoria: categorias/:id/videos/    
 
 4. Buscas
-- [ ] Busca de vídeo por título: /videos/?search=titulo
+- [x] Busca de vídeo por título: /videos/?search=titulo
 
 ### Validações
 
