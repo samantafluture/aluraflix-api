@@ -112,7 +112,7 @@ Além disso, há rotas agrupadas e relacionadas, como:
 E buscas como `query string`:
 - rota `/videos/search?=titulo` (buscar vídeos pelo título)
 
-[json](https://github.com/samantafluture/aluraflix-api/blob/main/public/json.png?raw=true)
+![json](https://github.com/samantafluture/aluraflix-api/blob/main/public/json.png?raw=true)
 
 ## Em construção
 
