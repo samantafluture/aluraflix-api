@@ -9,12 +9,15 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       titulo: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       descricao: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       url: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       categoria_id: {

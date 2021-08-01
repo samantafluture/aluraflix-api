@@ -12,8 +12,24 @@ module.exports = (sequelize, DataTypes) => {
   }
   Categorias.init(
     {
-      titulo: DataTypes.STRING,
-      cor: DataTypes.STRING,
+      titulo: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: "O campo 'titulo' é obrigatório",
+          },
+        },
+      },
+      cor: {
+        type: DataTypes.STRING,
+        validate: {
+          is: {
+            args: ["^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"],
+            msg: "O campo 'cor' é obrigatório e deve ser em código hexadecimal",
+          },
+        },
+      },
     },
     {
       sequelize,
