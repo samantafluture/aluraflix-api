@@ -97,8 +97,28 @@ module.exports = {
 
 ## API no ar
 
-Acesse [/categorias](http://localhost:3000/categorias) no seu localhost.
+Acesse [/categorias](http://localhost:3000/categorias) ou [/videos](http://localhost:3000/videos) no seu localhost.
 
-### Rotas
+As rotas configuradas são:
+- get (pegar todos)
+- get by id (pegar pelo id)
+- post (publicar)
+- put (atualizar)
+- delete (remover)
 
-- [ ] Em construção
+Além disso, há rotas agrupadas e relacionadas, como:
+- rota `/categorias/:id/videos`(pegar vídeos pelo id da categoria)
+
+E buscas como `query string`:
+- rota `/videos/search?=titulo` (buscar vídeos pelo título)
+
+[json]()
+
+## Em construção
+
+- [ ] Testes unitários para modelos e controllers
+- [ ] Testes de integração
+- [ ] Documentação
+- [ ] Deploy
+- [ ] Integração com Front-end
+
