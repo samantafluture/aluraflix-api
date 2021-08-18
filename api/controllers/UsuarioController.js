@@ -40,6 +40,7 @@ class UsuarioController {
 
   static async criaUsuario(req, res) {
     const novoUsuario = req.body;
+
     try {
       const novoUsuarioCriado = await usuariosServices.criaRegistro(
         novoUsuario

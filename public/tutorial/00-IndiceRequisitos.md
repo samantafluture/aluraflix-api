@@ -9,6 +9,7 @@
 5. Criar requisições relacionais e buscas
 6. Fazer validações nos modelos
 7. Fazer paginação nos controllers
+8. Criar sistema de usuário, login e autenticação
 
 ## Requisitos
 
