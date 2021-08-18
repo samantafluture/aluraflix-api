@@ -41,6 +41,12 @@
 4. Buscas
 - [x] Busca de vídeo por título: /videos/?search=titulo
 
+5. Paginação
+- [x] Criar paginação com 5 resultados por página usando rota `/?page=1`
+
+6. Sem autenticação
+- [ ] Criar rota get/videos/free com número fixo de filmes disponíveis
+
 ### Validações
 
 1. Categorias
@@ -51,6 +57,12 @@
 
 2. Vídeos
 - [x] Todos os campos devem ser obrigatórios e validados
+
+### Autenticação
+
+- [ ] Apenas usuários autenticados podem acessar rotas GET, POST, PUT e DELETE
+- [ ] Caso contrário, retornar mensagem `Não autorizado` ou `Credenciais inválidas`
+- [ ] Caso usuário e senha inválidos, informar `Usuário e senha inválidos`
 
 ### Testes
 
