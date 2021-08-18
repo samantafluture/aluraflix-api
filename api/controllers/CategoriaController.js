@@ -3,17 +3,20 @@ const categoriasServices = new Services('Categorias');
 
 class CategoriaController {
     static async pegaTodasAsCategorias(req, res) {
-        const pageAsNumber = Number.parseInt(req.query.page);
         const where = {};
+
+        const limit = 5;
         let page = 0;
+        const pageAsNumber = Number.parseInt(req.query.page);
         if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
             page = pageAsNumber;
         }
+
         try {
             const todasAsCategorias =
                 await categoriasServices.pegaTodosOsRegistros(where, {
-                    limit: 5,
-                    offset: page * 5,
+                    limit: limit,
+                    offset: page * limit,
                     order: [['id', 'ASC']],
                 });
             return res.status(200).json(todasAsCategorias);
