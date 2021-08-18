@@ -28,7 +28,7 @@ class CategoriaController {
             const categoria = await categoriasServices.pegaUmRegistro({ id });
             if (categoria === null) {
                 return res
-                    .status(200)
+                    .status(400)
                     .json({ mensagem: `categoria ${id} não existe` });
             } else {
                 return res.status(200).json(categoria);
