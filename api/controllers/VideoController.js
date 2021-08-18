@@ -5,25 +5,24 @@ const Op = Sequelize.Op;
 
 class VideoController {
     static async pegaTodosOsVideos(req, res) {
-        const { search } = req.query;
         const where = {};
+
+        const { search } = req.query;
         search ? (where.titulo = {}) : null;
         search ? (where.titulo[Op.substring] = search) : null;
 
+        const page = req.query.page;
         const limit = 5;
-        let page = 0;
-        const pageAsNumber = Number.parseInt(req.query.page);
-        if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
-            page = pageAsNumber;
-        }
+        const offset = (page ? parseInt(page * limit) : 0);
+        const order = [['id', 'ASC']];
 
         try {
             const todosOsVideos = await videosServices.pegaTodosOsRegistros(
                 where,
                 {
                     limit: limit,
-                    offset: page * limit,
-                    order: [['id', 'ASC']],
+                    offset: offset,
+                    order: order
                 }
             );
             return res.status(200).json(todosOsVideos);

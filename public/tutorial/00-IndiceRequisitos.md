@@ -8,6 +8,7 @@
 4. Criar novas tabelas e associações
 5. Criar requisições relacionais e buscas
 6. Fazer validações nos modelos
+7. Fazer paginação nos controllers
 
 ## Requisitos
 
