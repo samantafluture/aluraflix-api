@@ -7,7 +7,8 @@
 - Express
 - Sequelize
 - MySQL 
-- Postman
+- Redis
+- Postman/Insomnia
 
 ## Preparar o ambiente
 
