@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const jwt = require('jsonwebtoken');
 const Services = require('../services/Services');
 
@@ -7,7 +9,7 @@ function criaTokenJWT(usuario) {
     const payload = {
         id: usuario.id,
     };
-    const token = jwt.sign(payload, 'senha-secreta');
+    const token = jwt.sign(payload, process.env.JWT_TOKEN);
     return token;
 }
 
