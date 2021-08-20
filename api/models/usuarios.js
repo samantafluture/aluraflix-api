@@ -1,8 +1,12 @@
+const { Model } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
-  const Usuarios = sequelize.define(
-    'Usuarios',
+  class Usuarios extends Model {
+    // eslint-disable-next-line no-unused-vars
+    static associate(models) {}
+  }
+  Usuarios.init(
     {
       nome: {
         type: DataTypes.STRING,
@@ -33,19 +37,15 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      hooks: {
-        beforeCreate: (usuario) => {
-          const salt = bcrypt.genSaltSync();
-          // eslint-disable-next-line no-param-reassign
-          usuario.senha = bcrypt.hashSync(usuario.senha, salt);
-        },
-      },
-      classMethods: {
-        // eslint-disable-next-line no-unused-vars
-        associate: (models) => {},
-        isPassword: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword),
-      },
+      sequelize,
+      modelName: 'Usuarios',
     },
   );
+  Usuarios.addHook('beforeSave', async (usuario) => {
+    if (usuario.senha) {
+      // eslint-disable-next-line no-param-reassign
+      usuario.senha = await bcrypt.hash(usuario.senha, 8);
+    }
+  });
   return Usuarios;
 };
