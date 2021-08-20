@@ -1,6 +1,15 @@
+const jwt = require('jsonwebtoken');
 const Services = require('../services/Services');
 
 const usuariosServices = new Services('Usuarios');
+
+function criaTokenJWT(usuario) {
+    const payload = {
+        id: usuario.id,
+    };
+    const token = jwt.sign(payload, 'senha-secreta');
+    return token;
+}
 
 class UsuarioController {
     static async pegaTodosOsUsuarios(req, res) {
@@ -17,7 +26,9 @@ class UsuarioController {
         try {
             const usuario = await usuariosServices.pegaUmRegistro({ id });
             if (usuario === null) {
-                return res.status(400).json({ mensagem: `usuário ${id} não existe` });
+                return res
+                    .status(400)
+                    .json({ mensagem: `usuário ${id} não existe` });
             }
             return res.status(200).json(usuario);
         } catch (error) {
@@ -43,7 +54,9 @@ class UsuarioController {
         const infosAtualizadas = req.body;
         try {
             await usuariosServices.atualizaRegistro(infosAtualizadas, id);
-            return res.status(200).json({ mensagem: `usuário ${id} atualizado` });
+            return res
+                .status(200)
+                .json({ mensagem: `usuário ${id} atualizado` });
         } catch (error) {
             return res.status(500).json(error.message);
         }
@@ -60,7 +73,8 @@ class UsuarioController {
     }
 
     static logaUsuario(req, res) {
-    // se o login for bem-sucedido, devolve 204 = pág. vazia, tudo certo
+        const token = criaTokenJWT(req.user);
+        res.set('Authorization', token);
         res.status(204).send();
     }
 }
