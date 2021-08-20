@@ -1,9 +1,7 @@
-const estrategiasAutenticacao = require('./estrategias-autenticacao');
-const middlewaresAutenticacao = require('./middlewares-autenticacao');
-const errorsAutenticacao = require('./erros-autenticacao');
+const validaUsuario = require('./validaUsuario');
+const autenticaUsuario = require('./autenticaUsuario');
 
 module.exports = {
-    estrategiasAutenticacao,
-    middlewaresAutenticacao,
-    errorsAutenticacao,
+    validaUsuario,
+    autenticaUsuario,
 };

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { middlewaresAutenticacao } = require('../middlewares');
+const { autenticaUsuario } = require('../middlewares');
 const CategoriaController = require('../controllers/CategoriaController');
 
 const router = Router();
@@ -7,27 +7,27 @@ const router = Router();
 router
     .get(
         '/categorias',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         CategoriaController.pegaTodasAsCategorias,
     )
     .get(
         '/categorias/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         CategoriaController.pegaCategoriaPeloId,
     )
     .post(
         '/categorias',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         CategoriaController.criaCategoria,
     )
     .put(
         '/categorias/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         CategoriaController.atualizaCategoria,
     )
     .delete(
         '/categorias/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         CategoriaController.removeCategoria,
     );
 

@@ -1,34 +1,35 @@
 const { Router } = require('express');
-const { middlewaresAutenticacao } = require('../middlewares');
+const { autenticaUsuario } = require('../middlewares');
 const UsuarioController = require('../controllers/UsuarioController');
+const AuthController = require('../controllers/AuthController');
 
 const router = Router();
 
 router
     .get(
         '/usuarios',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         UsuarioController.pegaTodosOsUsuarios,
     )
     .get(
         '/usuarios/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         UsuarioController.pegaUsuarioPeloId,
     )
     .post('/usuarios', UsuarioController.criaUsuario)
     .post(
         '/login',
-        middlewaresAutenticacao.local,
-        UsuarioController.logaUsuario,
+        autenticaUsuario.local,
+        AuthController.logaUsuario,
     )
     .put(
         '/usuarios/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         UsuarioController.atualizaUsuario,
     )
     .delete(
         '/usuarios/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         UsuarioController.removeUsuario,
     );
 

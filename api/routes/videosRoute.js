@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { middlewaresAutenticacao } = require('../middlewares');
+const { autenticaUsuario } = require('../middlewares');
 const VideoController = require('../controllers/VideoController');
 
 const router = Router();
@@ -11,28 +11,28 @@ router
     )
     .get(
         '/videos',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         VideoController.pegaTodosOsVideos,
     )
     .get(
         '/videos/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         VideoController.pegaVideoPeloId,
     )
     .get(
         '/categorias/:categoriaId/videos',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         VideoController.pegaVideosPorCategoria,
     )
-    .post('/videos', middlewaresAutenticacao.bearer, VideoController.criaVideo)
+    .post('/videos', autenticaUsuario.bearer, VideoController.criaVideo)
     .put(
         '/videos/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         VideoController.atualizaVideo,
     )
     .delete(
         '/videos/:id',
-        middlewaresAutenticacao.bearer,
+        autenticaUsuario.bearer,
         VideoController.removeVideo,
     );
 
