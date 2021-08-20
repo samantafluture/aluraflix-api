@@ -46,7 +46,7 @@
 - [x] Criar paginação com 5 resultados por página usando rota `/?page=1`
 
 6. Sem autenticação
-- [ ] Criar rota get/videos/free com número fixo de filmes disponíveis
+- [x] Criar rota get/videos/free com número fixo de filmes disponíveis
 
 ### Validações
 
@@ -61,9 +61,9 @@
 
 ### Autenticação
 
-- [ ] Apenas usuários autenticados podem acessar rotas GET, POST, PUT e DELETE
-- [ ] Caso contrário, retornar mensagem `Não autorizado` ou `Credenciais inválidas`
-- [ ] Caso usuário e senha inválidos, informar `Usuário e senha inválidos`
+- [x] Apenas usuários autenticados podem acessar rotas GET, POST, PUT e DELETE
+- [x] Caso contrário, retornar mensagem `Não autorizado` 
+- [x] Caso usuário e senha inválidos, informar `Usuário e senha inválidos`
 
 ### Testes
 

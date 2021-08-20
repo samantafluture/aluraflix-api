@@ -60,6 +60,6 @@ E o `limit` será a quantidade de resultados por página = 5.
 
 Lembrar que sempre se inicia na página 0.
 
-Ambos os métodos `pegaTodasAsCategorias` e `pegaTodosOsVideos` usam o mesmo service = `pegaTodosOsRegistros. Por isso, aceitam os mesmos parâmetros de paginação (`limit`, `offset` e `order`).
+Ambos os métodos `pegaTodasAsCategorias` e `pegaTodosOsVideos` usam o mesmo service = `pegaTodosOsRegistros`. Por isso, aceitam os mesmos parâmetros de paginação (limit, offset e order).
 
 
