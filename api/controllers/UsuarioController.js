@@ -25,6 +25,27 @@ class UsuarioController {
     }
   }
 
+  /*
+  // eslint-disable-next-line no-unused-vars
+  static async buscaUsuarioPorEmail(req, res) {
+    const { email } = req.params;
+    const usuario = await usuariosServices.pegaUmRegistro({ email });
+    if (!usuario) {
+      return null;
+    }
+    return usuario;
+    // try {
+    //   const usuario = await usuariosServices.pegaUmRegistro({ email });
+    //   if (!usuario) {
+    //     return res.status(400).json({ mensagem: `usuário de ${email} não existe` });
+    //   }
+    //   return res.status(200).json(usuario);
+    // } catch (error) {
+    //   return res.status(500).json(error.message);
+    // }
+  }
+  */
+
   static async criaUsuario(req, res) {
     const novoUsuario = req.body;
 
