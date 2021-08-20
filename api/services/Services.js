@@ -1,4 +1,5 @@
-const database = require("../models");
+/* eslint-disable object-shorthand */
+const database = require('../models');
 
 class Services {
   constructor(nomeDoModelo) {
@@ -24,7 +25,7 @@ class Services {
     return database[this.nomeDoModelo].update(
       dadosAtualizados,
       { where: { id: id } },
-      transacao
+      transacao,
     );
   }
 

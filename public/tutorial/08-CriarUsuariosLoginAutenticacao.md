@@ -25,3 +25,5 @@ Usuarios.addHook('beforeSave', async usuario => {
     }
 });
 ```
+
+https://github.com/mln4you/express-jwt-starter

@@ -1,9 +1,9 @@
-const CategoriasServices = require("./CategoriasServices");
-const VideosServices = require("./VideosServices");
-const UsuariosServices = require("./UsuariosServices");
+const CategoriasServices = require('./CategoriasServices');
+const VideosServices = require('./VideosServices');
+const UsuariosServices = require('./UsuariosServices');
 
 module.exports = {
-  CategoriasServices: CategoriasServices,
-  VideosServices: VideosServices,
-  UsuariosServices: UsuariosServices,
+  CategoriasServices,
+  VideosServices,
+  UsuariosServices,
 };

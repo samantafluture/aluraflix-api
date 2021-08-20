@@ -1,7 +1,6 @@
-"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Videos", {
+    await queryInterface.createTable('Videos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -23,7 +22,7 @@ module.exports = {
       categoria_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: "Categorias", key: "id" },
+        references: { model: 'Categorias', key: 'id' },
       },
       createdAt: {
         allowNull: false,
@@ -35,7 +34,8 @@ module.exports = {
       },
     });
   },
+  // eslint-disable-next-line no-unused-vars
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Videos");
+    await queryInterface.dropTable('Videos');
   },
 };

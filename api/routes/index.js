@@ -1,11 +1,9 @@
-const bodyParser = require("body-parser");
+const express = require('express');
 
-const categorias = require("./categoriasRoute");
-const videos = require("./videosRoute");
-const usuarios = require("./usuariosRoute");
+const categorias = require('./categoriasRoute');
+const videos = require('./videosRoute');
+const usuarios = require('./usuariosRoute');
 
 module.exports = (app) => {
-  app.use(bodyParser.json(), categorias, videos, usuarios);
+  app.use(express.json(), categorias, videos, usuarios);
 };
-
-// app.use(express.json())

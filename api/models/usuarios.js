@@ -1,19 +1,15 @@
-"use strict";
-const { Model } = require("sequelize");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
-  class Usuarios extends Model {
-    static associate(models) {}
-  }
-  Usuarios.init(
+  const Usuarios = sequelize.define(
+    'Usuarios',
     {
       nome: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
             args: true,
-            msg: "O campo 'nome' é obrigatório",
+            msg: 'O campo \'nome\' é obrigatório',
           },
         },
       },
@@ -22,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isEmail: {
             args: true,
-            msg: "Preencha com email válido",
+            msg: 'Preencha com email válido',
           },
         },
       },
@@ -31,20 +27,25 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: {
             args: [2, 10],
-            msg: "O campo 'senha' é obrigatório e deve ter de 2 a 10 caracteres",
+            msg: 'O campo \'senha\' é obrigatório e deve ter de 2 a 10 caracteres',
           },
         },
       },
     },
     {
-      sequelize,
-      modelName: "Usuarios",
-    }
+      hooks: {
+        beforeCreate: (usuario) => {
+          const salt = bcrypt.genSaltSync();
+          // eslint-disable-next-line no-param-reassign
+          usuario.senha = bcrypt.hashSync(usuario.senha, salt);
+        },
+      },
+      classMethods: {
+        // eslint-disable-next-line no-unused-vars
+        associate: (models) => {},
+        isPassword: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword),
+      },
+    },
   );
-    Usuarios.addHook('beforeSave', async usuario => {
-      if (usuario.senha) {
-        usuario.senha = await bcrypt.hash(usuario.senha, 8);
-      }
-    });
   return Usuarios;
 };

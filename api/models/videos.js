@@ -1,12 +1,10 @@
-"use strict";
-
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Videos extends Model {
     static associate(models) {
       Videos.belongsTo(models.Categorias, {
-        foreignKey: "categoria_id",
+        foreignKey: 'categoria_id',
       });
     }
   }
@@ -17,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notEmpty: {
             args: true,
-            msg: "O campo 'titulo' é obrigatório",
+            msg: 'O campo \'titulo\' é obrigatório',
           },
         },
       },
@@ -26,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notEmpty: {
             args: true,
-            msg: "O campo 'descricao' é obrigatório",
+            msg: 'O campo \'descricao\' é obrigatório',
           },
         },
       },
@@ -35,15 +33,15 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isUrl: {
             args: true,
-            msg: "O campo 'url' é obrigatório e deve ser uma URL válida",
+            msg: 'O campo \'url\' é obrigatório e deve ser uma URL válida',
           },
         },
       },
     },
     {
       sequelize,
-      modelName: "Videos",
-    }
+      modelName: 'Videos',
+    },
   );
   return Videos;
 };
