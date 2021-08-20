@@ -14,6 +14,10 @@ router
         UsuarioController.logaUsuario,
     )
     .put('/usuarios/:id', UsuarioController.atualizaUsuario)
-    .delete('/usuarios/:id', UsuarioController.removeUsuario);
+    .delete(
+        '/usuarios/:id',
+        passport.authenticate('bearer', { session: false }),
+        UsuarioController.removeUsuario,
+    );
 
 module.exports = router;
