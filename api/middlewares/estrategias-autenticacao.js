@@ -6,17 +6,18 @@ const BearerStrategy = require('passport-http-bearer').Strategy;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const models = require('../models');
+const { InvalidArgumentError } = require('./erros-autenticacao');
 
 function verificaUsuario(usuario) {
     if (!usuario) {
-        throw new Error('Não existe usuário com este email');
+        throw new InvalidArgumentError('Não existe usuário com este email');
     }
 }
 
 async function verificaSenha(senha, senhaHash) {
     const senhaValida = await bcrypt.compare(senha, senhaHash);
     if (!senhaValida) {
-        throw new Error('Email ou senha inválidos');
+        throw new InvalidArgumentError('Email ou senha inválidos');
     }
 }
 
