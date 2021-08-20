@@ -6,11 +6,19 @@ const BearerStrategy = require('passport-http-bearer').Strategy;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const models = require('../models');
+const blacklist = require('../redis/manipulaBlacklist');
 const { InvalidArgumentError } = require('../helpers/manipulaErros');
 
 function verificaUsuario(usuario) {
     if (!usuario) {
         throw new InvalidArgumentError('Não existe usuário com este email');
+    }
+}
+
+async function verificaTokenNaBlacklist(token) {
+    const tokenNaBlacklist = await blacklist.contemToken(token);
+    if (tokenNaBlacklist) {
+        throw new jwt.JsonWebTokenError('Token inválido por logout');
     }
 }
 
@@ -48,6 +56,8 @@ passport.use(
 passport.use(
     new BearerStrategy(async (token, done) => {
         try {
+            // verifica se o token está na blacklist
+            await verificaTokenNaBlacklist(token);
             // devolve payload se o token estiver váliado
             const payload = jwt.verify(token, process.env.JWT_TOKEN);
             // recupera o usuário via id
