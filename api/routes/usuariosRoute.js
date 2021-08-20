@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const { autenticaUsuario } = require('../middlewares');
-const UsuarioController = require('../controllers/UsuarioController');
-const AuthController = require('../controllers/AuthController');
+const { UsuarioController } = require('../controllers');
 
 const router = Router();
 
@@ -17,11 +16,6 @@ router
         UsuarioController.pegaUsuarioPeloId,
     )
     .post('/usuarios', UsuarioController.criaUsuario)
-    .post(
-        '/login',
-        autenticaUsuario.local,
-        AuthController.logaUsuario,
-    )
     .put(
         '/usuarios/:id',
         autenticaUsuario.bearer,

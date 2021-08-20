@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { autenticaUsuario } = require('../middlewares');
-const VideoController = require('../controllers/VideoController');
+const { VideoController } = require('../controllers');
 
 const router = Router();
 

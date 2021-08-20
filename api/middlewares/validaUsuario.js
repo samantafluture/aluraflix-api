@@ -6,7 +6,7 @@ const BearerStrategy = require('passport-http-bearer').Strategy;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const models = require('../models');
-const { InvalidArgumentError } = require('../helpers/erros');
+const { InvalidArgumentError } = require('../helpers/manipulaErros');
 
 function verificaUsuario(usuario) {
     if (!usuario) {
@@ -54,7 +54,8 @@ passport.use(
             const usuario = await models.Usuarios.findOne({
                 where: { id: payload.id },
             });
-            done(null, usuario);
+            // eslint-disable-next-line object-shorthand
+            done(null, usuario, { token: token });
         } catch (erro) {
             done(erro);
         }

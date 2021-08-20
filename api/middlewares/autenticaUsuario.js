@@ -44,6 +44,8 @@ module.exports = {
                 if (!usuario) {
                     return res.status(401).json({ mensagem: 'Não autorizado' });
                 }
+
+                req.token = info.token;
                 req.user = usuario;
                 return next();
             },

@@ -7,12 +7,9 @@ const express = require('express');
 const routes = require('./routes');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
-const {
-    validaUsuario,
-    a,
-} = require('./middlewares');
+require('./redis/blacklist');
 
 routes(app);
 
