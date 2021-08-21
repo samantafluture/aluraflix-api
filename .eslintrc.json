@@ -23,5 +23,5 @@
         "implicit-arrow-linebreak": "off",
         "arrow-body-style": "off"
     },
-    "plugins": ["jest"]
+    "plugins": ["jest", "regex"]
 }

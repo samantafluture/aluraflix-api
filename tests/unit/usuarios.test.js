@@ -15,6 +15,7 @@ describe('Usuários', () => {
             senha: '12345678'
         });
         const compareHash = await bcrypt.compare('12345678', usuario.senha);
+
         expect(compareHash).toBe(true);
     });
     it('deve verificar se o usuário existe via email', async () => {
@@ -23,10 +24,10 @@ describe('Usuários', () => {
             email: 'ana@email.com',
             senha: '12345678'
         });
-
         const emailExistente = await models.Usuarios.findOne({
             where: { email: 'ana@email.com' }
         });
+
         expect(usuario.email).toMatch(emailExistente.email);
     });
     it('deve validar que o email preenchido é válido', async () => {
@@ -35,6 +36,7 @@ describe('Usuários', () => {
             email: 'nancy@email.com',
             senha: '12345678'
         });
+
         expect(usuario.email).toContain('@');
     });
     it('deve validar que nome foi preenchido e tem pelo menos 3 caracteres', async () => {
@@ -43,6 +45,7 @@ describe('Usuários', () => {
             email: 'zozo@email.com',
             senha: '12345678'
         });
+
         expect(usuario.nome).toHaveLength(3);
     });
 });
