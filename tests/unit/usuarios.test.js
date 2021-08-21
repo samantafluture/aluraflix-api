@@ -10,7 +10,9 @@ describe('Usuários', () => {
     });
 
     it('deve criar uma senha hash válida para o usuário', async () => {
-        const usuario = await factory.create('Usuarios', {});
+        const usuario = await factory.create('Usuarios', {
+            senha: '12345678'
+        });
         const compareHash = await bcrypt.compare('12345678', usuario.senha);
 
         expect(compareHash).toBe(true);

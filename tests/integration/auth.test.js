@@ -31,7 +31,9 @@ describe('Autenticação', () => {
         expect(response.status).toBe(401);
     });
     it('deve logar usuário com credenciais válidas', async () => {
-        const usuario = await factory.create('Usuarios', {});
+        const usuario = await factory.create('Usuarios', {
+            senha: '12345678'
+        });
         const response = await request(app).post('/login').send({
             email: usuario.email,
             senha: '12345678'
@@ -40,7 +42,9 @@ describe('Autenticação', () => {
         expect(response.status).toBe(204);
     });
     it('deve enviar um token caso autenticado', async () => {
-        const usuario = await factory.create('Usuarios', {});
+        const usuario = await factory.create('Usuarios', {
+            senha: '12345678'
+        });
         const payload = { id: usuario.id };
         const token = jwt.sign(payload, 'secret');
 

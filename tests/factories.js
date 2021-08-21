@@ -1,10 +1,11 @@
+const faker = require('faker');
 const { factory } = require('factory-girl');
 const { Usuarios, Categorias, Videos } = require('../api/models');
 
 factory.define('Usuarios', Usuarios, {
-    nome: 'Samanta Fluture',
-    email: 'samantagf@email.com',
-    senha: '12345678'
+    nome: faker.name.findName(),
+    email: faker.internet.email(),
+    senha: faker.internet.password()
 });
 
 factory.define('Categorias', Categorias, {

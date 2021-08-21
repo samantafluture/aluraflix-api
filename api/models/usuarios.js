@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 validate: {
                     len: {
-                        args: [2, 10],
-                        msg: 'O campo \'senha\' é obrigatório e deve ter de 2 a 10 caracteres'
+                        args: [2, 100],
+                        msg: 'O campo \'senha\' é obrigatório e deve ter de 2 a 100 caracteres'
                     }
                 }
             }
