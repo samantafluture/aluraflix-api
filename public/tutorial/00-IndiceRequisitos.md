@@ -10,6 +10,7 @@
 6. Fazer validações nos modelos
 7. Fazer paginação nos controllers
 8. Criar sistema de usuário, login e autenticação
+9. Testes unitários e de integração
 
 ## Requisitos
 
