@@ -1,7 +1,13 @@
 const bcrypt = require('bcrypt');
+const models = require('../../api/models');
 const { Usuarios } = require('../../api/models');
+const truncate = require('../utils/truncate');
 
 describe('Usuários', () => {
+    beforeEach(async () => {
+        await truncate();
+    });
+
     it('deve criar uma senha hash válida para o usuário', async () => {
         const usuario = await Usuarios.create({
             nome: 'Rosa Fluture',
@@ -12,10 +18,16 @@ describe('Usuários', () => {
         expect(compareHash).toBe(true);
     });
     it('deve verificar se o usuário existe via email', async () => {
-        const usuario = await Usuarios.findOne({
+        const usuario = await Usuarios.create({
+            nome: 'Ana Fluture',
+            email: 'ana@email.com',
+            senha: '12345678'
+        });
+
+        const emailExistente = await models.Usuarios.findOne({
             where: { email: 'ana@email.com' }
         });
-        expect(usuario.email).toMatch('ana@email.com');
+        expect(usuario.email).toMatch(emailExistente.email);
     });
     it('deve validar que o email preenchido é válido', async () => {
         const usuario = await Usuarios.create({

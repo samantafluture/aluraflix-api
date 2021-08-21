@@ -20,7 +20,8 @@
         "comma-dangle": ["warn", "never"],
         "no-unused-vars": "off",
         "no-console": "off",
-        "implicit-arrow-linebreak": "off"
+        "implicit-arrow-linebreak": "off",
+        "arrow-body-style": "off"
     },
     "plugins": ["jest"]
 }
