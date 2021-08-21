@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
     class Usuarios extends Model {
-    // eslint-disable-next-line no-unused-vars
         static associate(models) {}
     }
     Usuarios.init(
@@ -13,33 +12,33 @@ module.exports = (sequelize, DataTypes) => {
                 validate: {
                     notEmpty: {
                         args: true,
-                        msg: 'O campo \'nome\' é obrigatório',
-                    },
-                },
+                        msg: 'O campo \'nome\' é obrigatório'
+                    }
+                }
             },
             email: {
                 type: DataTypes.STRING,
                 validate: {
                     isEmail: {
                         args: true,
-                        msg: 'Preencha com email válido',
-                    },
-                },
+                        msg: 'Preencha com email válido'
+                    }
+                }
             },
             senha: {
                 type: DataTypes.STRING,
                 validate: {
                     len: {
                         args: [2, 10],
-                        msg: 'O campo \'senha\' é obrigatório e deve ter de 2 a 10 caracteres',
-                    },
-                },
-            },
+                        msg: 'O campo \'senha\' é obrigatório e deve ter de 2 a 10 caracteres'
+                    }
+                }
+            }
         },
         {
             sequelize,
-            modelName: 'Usuarios',
-        },
+            modelName: 'Usuarios'
+        }
     );
     Usuarios.addHook('beforeCreate', async (usuario) => {
         const senhaHash = await bcrypt.hash(usuario.senha, 8);

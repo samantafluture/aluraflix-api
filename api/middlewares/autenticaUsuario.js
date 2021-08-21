@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const passport = require('passport');
 
 module.exports = {
@@ -18,7 +17,7 @@ module.exports = {
                 }
                 req.user = usuario;
                 return next();
-            },
+            }
         )(req, res, next);
     },
 
@@ -28,15 +27,15 @@ module.exports = {
             { session: false },
             (erro, usuario, info) => {
                 if (erro && erro.name === 'JsonWebTokenError') {
-                    return res.status(401).json({ mensagem: 'Token JWT inválido' });
-                }
-                if (erro && erro.name === 'TokenExpiredError') {
                     return res
                         .status(401)
-                        .json({
-                            mensagem: 'Token JWT expirado',
-                            expiradoEm: erro.expiredAt,
-                        });
+                        .json({ mensagem: 'Token JWT inválido' });
+                }
+                if (erro && erro.name === 'TokenExpiredError') {
+                    return res.status(401).json({
+                        mensagem: 'Token JWT expirado',
+                        expiradoEm: erro.expiredAt
+                    });
                 }
                 if (erro) {
                     return res.status(500).json({ erro: erro.message });
@@ -48,7 +47,7 @@ module.exports = {
                 req.token = info.token;
                 req.user = usuario;
                 return next();
-            },
+            }
         )(req, res, next);
-    },
+    }
 };

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -10,14 +9,14 @@ describe('Usuarios', () => {
         const usuario = await Usuarios.create({
             nome: 'Teste 1',
             email: 'teste@email.com',
-            senha: '12345678',
+            senha: '12345678'
         });
         const compareHash = await bcrypt.compare('12345678', usuario.senha);
         expect(compareHash).toBe(true);
     });
     it('deve verificar se o usuário existe via email', async () => {
         const usuario = await models.Usuarios.findOne({
-            where: { email: 'teste@email.com' },
+            where: { email: 'teste@email.com' }
         });
         const emailUsuario = usuario.email;
         expect(emailUsuario).toMatch('teste@email.com');
@@ -26,7 +25,7 @@ describe('Usuarios', () => {
         const usuario = await Usuarios.create({
             nome: 'Teste 2',
             email: 'teste2@email.com',
-            senha: '12345678',
+            senha: '12345678'
         });
         const emailUsuario = usuario.email;
         expect(emailUsuario).toContain('@');
@@ -35,7 +34,7 @@ describe('Usuarios', () => {
         const usuario = await Usuarios.create({
             nome: 'Sam',
             email: 'sam@email.com',
-            senha: '12345678',
+            senha: '12345678'
         });
         const nomeUsuario = usuario.nome;
         expect(nomeUsuario).toHaveLength(3);
@@ -44,7 +43,7 @@ describe('Usuarios', () => {
         const usuario = await Usuarios.create({
             nome: 'Teste 3',
             email: 'teste3@email.com',
-            senha: '12345678',
+            senha: '12345678'
         });
         const payload = { id: usuario.id };
         const token = jwt.sign(payload, process.env.JWT_TOKEN);

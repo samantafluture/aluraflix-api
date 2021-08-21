@@ -7,7 +7,7 @@ const usuariosServices = new Services('Usuarios');
 
 function criaTokenJWT(usuario) {
     const payload = {
-        id: usuario.id,
+        id: usuario.id
     };
     const token = jwt.sign(payload, process.env.JWT_TOKEN);
     return token;
@@ -43,7 +43,7 @@ class UsuarioController {
 
         try {
             const novoUsuarioCriado = await usuariosServices.criaRegistro(
-                novoUsuario,
+                novoUsuario
             );
             return res.status(200).json(novoUsuarioCriado);
         } catch (error) {

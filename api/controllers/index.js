@@ -7,5 +7,5 @@ module.exports = {
     AuthController,
     CategoriaController,
     UsuarioController,
-    VideoController,
+    VideoController
 };

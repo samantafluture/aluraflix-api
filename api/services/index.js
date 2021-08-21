@@ -5,5 +5,5 @@ const UsuariosServices = require('./UsuariosServices');
 module.exports = {
     CategoriasServices,
     VideosServices,
-    UsuariosServices,
+    UsuariosServices
 };

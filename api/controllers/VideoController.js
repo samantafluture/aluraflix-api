@@ -20,11 +20,14 @@ class VideoController {
         const order = [['id', 'ASC']];
 
         try {
-            const todosOsVideos = await videosServices.pegaTodosOsRegistros(where, {
-                limit,
-                offset,
-                order,
-            });
+            const todosOsVideos = await videosServices.pegaTodosOsRegistros(
+                where,
+                {
+                    limit,
+                    offset,
+                    order
+                }
+            );
             return res.status(200).json(todosOsVideos);
         } catch (error) {
             return res.status(500).json(error.message);
@@ -36,7 +39,9 @@ class VideoController {
         try {
             const video = await videosServices.pegaUmRegistro({ id });
             if (video === null) {
-                return res.status(401).json({ mensagem: `vídeo ${id} não existe` });
+                return res
+                    .status(401)
+                    .json({ mensagem: `vídeo ${id} não existe` });
             }
             return res.status(200).json(video);
         } catch (error) {
@@ -47,7 +52,9 @@ class VideoController {
     static async criaVideo(req, res) {
         const novoVideo = req.body;
         try {
-            const novoVideoCriado = await videosServices.criaRegistro(novoVideo);
+            const novoVideoCriado = await videosServices.criaRegistro(
+                novoVideo
+            );
             return res.status(200).json(novoVideoCriado);
         } catch (error) {
             return res.status(500).json(error.message);
@@ -80,7 +87,7 @@ class VideoController {
         try {
             const todosOsVideos = await videosServices.encontraEContaRegistros(
                 { categoria_id: Number(categoriaId) },
-                { limit: 20, order: [['titulo', 'ASC']] },
+                { limit: 20, order: [['titulo', 'ASC']] }
             );
             return res.status(200).json(todosOsVideos);
         } catch (error) {

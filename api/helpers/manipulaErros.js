@@ -15,5 +15,5 @@ class InternalServerError extends Error {
 
 module.exports = {
     InvalidArgumentError,
-    InternalServerError,
+    InternalServerError
 };

@@ -8,27 +8,27 @@ router
     .get(
         '/categorias',
         autenticaUsuario.bearer,
-        CategoriaController.pegaTodasAsCategorias,
+        CategoriaController.pegaTodasAsCategorias
     )
     .get(
         '/categorias/:id',
         autenticaUsuario.bearer,
-        CategoriaController.pegaCategoriaPeloId,
+        CategoriaController.pegaCategoriaPeloId
     )
     .post(
         '/categorias',
         autenticaUsuario.bearer,
-        CategoriaController.criaCategoria,
+        CategoriaController.criaCategoria
     )
     .put(
         '/categorias/:id',
         autenticaUsuario.bearer,
-        CategoriaController.atualizaCategoria,
+        CategoriaController.atualizaCategoria
     )
     .delete(
         '/categorias/:id',
         autenticaUsuario.bearer,
-        CategoriaController.removeCategoria,
+        CategoriaController.removeCategoria
     );
 
 module.exports = router;

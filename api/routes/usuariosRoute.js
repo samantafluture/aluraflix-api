@@ -8,23 +8,23 @@ router
     .get(
         '/usuarios',
         autenticaUsuario.bearer,
-        UsuarioController.pegaTodosOsUsuarios,
+        UsuarioController.pegaTodosOsUsuarios
     )
     .get(
         '/usuarios/:id',
         autenticaUsuario.bearer,
-        UsuarioController.pegaUsuarioPeloId,
+        UsuarioController.pegaUsuarioPeloId
     )
     .post('/usuarios', UsuarioController.criaUsuario)
     .put(
         '/usuarios/:id',
         autenticaUsuario.bearer,
-        UsuarioController.atualizaUsuario,
+        UsuarioController.atualizaUsuario
     )
     .delete(
         '/usuarios/:id',
         autenticaUsuario.bearer,
-        UsuarioController.removeUsuario,
+        UsuarioController.removeUsuario
     );
 
 module.exports = router;

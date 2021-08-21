@@ -35,13 +35,13 @@ passport.use(
         {
             usernameField: 'email',
             passwordField: 'senha',
-            session: false,
+            session: false
         },
         async (email, senha, done) => {
             // função de verificação
             try {
                 const usuario = await models.Usuarios.findOne({
-                    where: { email },
+                    where: { email }
                 });
                 verificaUsuario(usuario);
                 await verificaSenha(senha, usuario.senha);
@@ -49,8 +49,8 @@ passport.use(
             } catch (erro) {
                 done(erro);
             }
-        },
-    ),
+        }
+    )
 );
 
 passport.use(
@@ -62,12 +62,12 @@ passport.use(
             const payload = jwt.verify(token, process.env.JWT_TOKEN);
             // recupera o usuário via id
             const usuario = await models.Usuarios.findOne({
-                where: { id: payload.id },
+                where: { id: payload.id }
             });
             // eslint-disable-next-line object-shorthand
             done(null, usuario, { token: token });
         } catch (erro) {
             done(erro);
         }
-    }),
+    })
 );

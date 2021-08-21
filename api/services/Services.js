@@ -9,7 +9,7 @@ class Services {
     async pegaTodosOsRegistros(where = {}, agregadores) {
         return database[this.nomeDoModelo].findAll({
             where: { ...where },
-            ...agregadores,
+            ...agregadores
         });
     }
 
@@ -25,7 +25,7 @@ class Services {
         return database[this.nomeDoModelo].update(
             dadosAtualizados,
             { where: { id: id } },
-            transacao,
+            transacao
         );
     }
 
@@ -36,7 +36,7 @@ class Services {
     async encontraEContaRegistros(where = {}, agregadores) {
         return database[this.nomeDoModelo].findAndCountAll({
             where: { ...where },
-            ...agregadores,
+            ...agregadores
         });
     }
 }

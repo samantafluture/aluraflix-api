@@ -5,10 +5,10 @@ const blacklist = require('../redis/manipulaBlacklist');
 
 function criaTokenJWT(usuario) {
     const payload = {
-        id: usuario.id,
+        id: usuario.id
     };
     const token = jwt.sign(payload, process.env.JWT_TOKEN, {
-        expiresIn: '15m',
+        expiresIn: '15m'
     });
     return token;
 }

@@ -3,5 +3,5 @@ const autenticaUsuario = require('./autenticaUsuario');
 
 module.exports = {
     validaUsuario,
-    autenticaUsuario,
+    autenticaUsuario
 };

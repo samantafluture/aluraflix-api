@@ -15,7 +15,7 @@ class CategoriaController {
             const todasAsCategorias = await categoriasServices.pegaTodosOsRegistros(where, {
                 limit,
                 offset,
-                order,
+                order
             });
             return res.status(200).json(todasAsCategorias);
         } catch (error) {
@@ -42,7 +42,7 @@ class CategoriaController {
         const novaCategoria = req.body;
         try {
             const novaCategoriaCriada = await categoriasServices.criaRegistro(
-                novaCategoria,
+                novaCategoria
             );
             return res.status(200).json(novaCategoriaCriada);
         } catch (error) {
