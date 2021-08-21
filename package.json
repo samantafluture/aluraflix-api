@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./api/server.js --ignore tests",
-    "test": "NODE_ENV=test jest"
+    "pretest": "NODE_ENV=test sequelize db:migrate",
+    "test": "NODE_ENV=test jest",
+    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +36,7 @@
     "eslint-plugin-jest": "^24.4.0",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
-    "sequelize-test-helpers": "^1.4.1"
+    "sequelize-test-helpers": "^1.4.1",
+    "sqlite3": "^5.0.2"
   }
 }
