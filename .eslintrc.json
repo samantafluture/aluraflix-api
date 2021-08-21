@@ -1,6 +1,6 @@
 {
     "env": {
-        "browser": true,
+        "node": true,
         "commonjs": true,
         "es2021": true
     },
@@ -13,6 +13,6 @@
     "rules": {
         "semi": ["warn", "always"],
         "quotes": ["warn", "single"],
-        "indent": ["error", 4]
+        "indent": ["warn", 4]
     }
 }
