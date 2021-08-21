@@ -19,7 +19,8 @@
         "max-len": ["warn", { "code": 100 }],
         "comma-dangle": ["warn", "never"],
         "no-unused-vars": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "implicit-arrow-linebreak": "off"
     },
     "plugins": ["jest"]
 }

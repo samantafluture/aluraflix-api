@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./api/index.js",
+    "start": "nodemon ./api/server.js --ignore tests",
     "test": "./node_modules/.bin/jest"
   },
   "keywords": [],
