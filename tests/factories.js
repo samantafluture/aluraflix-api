@@ -9,14 +9,14 @@ factory.define('Usuarios', Usuarios, {
 });
 
 factory.define('Categorias', Categorias, {
-    titulo: 'javascript',
-    cor: '#fcba03'
+    titulo: faker.lorem.word,
+    cor: faker.internet.color
 });
 
 factory.define('Videos', Videos, {
-    titulo: 'Tutorial Node.js e Sequelize',
-    descricao: 'Vídeo sobre como criar uma APi com Node.js',
-    url: 'https://www.youtube.com/watch?v=2G_mWfG0DZE&t',
+    titulo: faker.lorem.words,
+    descricao: faker.lorem.sentences,
+    url: faker.internet.url,
     categoria_id: '1'
 });
 
