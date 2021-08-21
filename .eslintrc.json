@@ -16,7 +16,7 @@
         "semi": ["warn", "always"],
         "quotes": ["warn", "single"],
         "indent": ["warn", 4],
-        "max-len": ["warn", { "code": 100 }],
+        "max-len": "off",
         "comma-dangle": ["warn", "never"],
         "no-unused-vars": "off",
         "no-console": "off",

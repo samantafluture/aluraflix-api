@@ -1,25 +1,12 @@
-require('dotenv').config();
+require('dotenv').config({
+    path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
+});
 
 module.exports = {
-    development: {
-        username: 'root',
-        password: process.env.DB_PASSWORD,
-        database: 'aluraflix',
-        host: '127.0.0.1',
-        dialect: 'mysql'
-    },
-    test: {
-        username: 'root',
-        password: process.env.DB_PASSWORD,
-        database: 'aluraflix',
-        host: '127.0.0.1',
-        dialect: 'mysql'
-    },
-    production: {
-        username: 'root',
-        password: null,
-        database: 'database_production',
-        host: '127.0.0.1',
-        dialect: 'mysql'
-    }
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALIECT || 'mysql',
+    storage: './tests/database.sqlite'
 };

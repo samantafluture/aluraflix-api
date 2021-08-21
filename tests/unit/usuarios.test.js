@@ -1,6 +1,4 @@
-require('dotenv').config();
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const models = require('../../api/models');
 const { Usuarios } = require('../../api/models');
 
@@ -38,15 +36,5 @@ describe('Usuarios', () => {
         });
         const nomeUsuario = usuario.nome;
         expect(nomeUsuario).toHaveLength(3);
-    });
-    it('deve criar um token para o usuário', async () => {
-        const usuario = await Usuarios.create({
-            nome: 'Teste 3',
-            email: 'teste3@email.com',
-            senha: '12345678'
-        });
-        const payload = { id: usuario.id };
-        const token = jwt.sign(payload, process.env.JWT_TOKEN);
-        expect(token).toBeDefined();
     });
 });

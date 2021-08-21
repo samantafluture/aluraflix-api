@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./api/server.js --ignore tests",
-    "test": "./node_modules/.bin/jest"
+    "test": "NODE_ENV=test jest"
   },
   "keywords": [],
   "author": "",
