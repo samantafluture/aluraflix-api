@@ -1,7 +1,8 @@
 const request = require('supertest');
+const jwt = require('jsonwebtoken');
 const app = require('../../api/app');
 const truncate = require('../utils/truncate');
-const { Usuarios } = require('../../api/models');
+const factory = require('../factories');
 
 describe('Autenticação', () => {
     beforeEach(async () => {
@@ -14,18 +15,14 @@ describe('Autenticação', () => {
     });
     it('deve criar usuário ao preencher campos corretamente', async () => {
         const response = await request(app).post('/usuarios').send({
-            nome: 'teste',
-            email: 'teste@email.com',
+            nome: 'Maria Silva',
+            email: 'mariasilva@email.com',
             senha: '12345678'
         });
         expect(response.status).toBe(200);
     });
     it('não deve logar usuário com credenciais inválidas', async () => {
-        const usuario = await Usuarios.create({
-            nome: 'Rosa Fluture',
-            email: 'rosa@email.com',
-            senha: '12345678'
-        });
+        const usuario = await factory.create('Usuarios', {});
         const response = await request(app).post('/login').send({
             email: usuario.email,
             senha: '123123123'
@@ -34,11 +31,7 @@ describe('Autenticação', () => {
         expect(response.status).toBe(401);
     });
     it('deve logar usuário com credenciais válidas', async () => {
-        const usuario = await Usuarios.create({
-            nome: 'Sam Fluture',
-            email: 'sam@email.com',
-            senha: '12345678'
-        });
+        const usuario = await factory.create('Usuarios', {});
         const response = await request(app).post('/login').send({
             email: usuario.email,
             senha: '12345678'
@@ -46,15 +39,19 @@ describe('Autenticação', () => {
 
         expect(response.status).toBe(204);
     });
+    it('deve enviar um token caso autenticado', async () => {
+        const usuario = await factory.create('Usuarios', {});
+        const payload = { id: usuario.id };
+        const token = jwt.sign(payload, 'secret');
 
-    // it('deve criar um token para o usuário', async () => {
-    //     const usuario = await Usuarios.create({
-    //         nome: 'Teste 3',
-    //         email: 'teste3@email.com',
-    //         senha: '12345678'
-    //     });
-    //     const payload = { id: usuario.id };
-    //     const token = jwt.sign(payload, process.env.JWT_TOKEN);
-    //     expect(token).toBeDefined();
-    // });
+        const response = await request(app)
+            .post('/login')
+            .set('Authorization', token)
+            .send({
+                email: usuario.email,
+                senha: '12345678'
+            });
+
+        expect(response.header).toHaveProperty('authorization');
+    });
 });

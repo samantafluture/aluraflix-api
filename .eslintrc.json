@@ -21,7 +21,8 @@
         "no-unused-vars": "off",
         "no-console": "off",
         "implicit-arrow-linebreak": "off",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "no-shadow": "off"
     },
     "plugins": ["jest", "regex"]
 }

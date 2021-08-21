@@ -1,5 +1,5 @@
-const { Categorias } = require('../../api/models');
 const truncate = require('../utils/truncate');
+const factory = require('../factories');
 
 describe('Caregorias', () => {
     beforeEach(async () => {
@@ -7,19 +7,11 @@ describe('Caregorias', () => {
     });
 
     it('deve validar que o título da categoria não é vazio', async () => {
-        const categoria = await Categorias.create({
-            titulo: 'javascript',
-            cor: '#fcba03'
-        });
-
+        const categoria = await factory.create('Categorias', {});
         expect(categoria.titulo).not.toBe('');
     });
     it('deve validar que a cor da categoria é válida e em formato hexadecimal', async () => {
-        const categoria = await Categorias.create({
-            titulo: 'css',
-            cor: '#b52dac'
-        });
-
+        const categoria = await factory.create('Categorias', {});
         const hexRegEx = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
         expect(categoria.cor).toMatch(hexRegEx);
     });
