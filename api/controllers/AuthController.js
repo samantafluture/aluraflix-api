@@ -17,7 +17,7 @@ class AuthController {
     static logaUsuario(req, res) {
         const token = criaTokenJWT(req.user);
         res.set('Authorization', token);
-        res.status(204).send();
+        res.status(200).send({ token });
     }
 
     static async logoutUsuario(req, res) {

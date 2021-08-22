@@ -39,7 +39,15 @@
                 "produces": ["application/json"],
                 "responses": {
                     "200": {
-                        "description": "Ok"
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Videos"
+                                }
+                            }
+                        }
                     },
                     "500": {
                         "description": "Internal Error Server"
@@ -51,25 +59,25 @@
             "get": {
                 "tags": ["videos"],
                 "summary": "Lista de vídeos cadastrados com opção de busca e paginação",
-                "description": "Retorna uma lista de vídeos cadastrados. Pode usar as querys: 'search' para buscar por uma palavra-chave no título dos vídeos; 'page' para visualizar a lista paginada", 
+                "description": "Retorna uma lista de vídeos cadastrados. Pode usar as querys: 'search' para buscar por uma palavra-chave no título dos vídeos; 'page' para visualizar a lista paginada",
                 "operationId": "pegaTodosOsVideos",
                 "produces": ["application/json"],
                 "parameters": [
                     {
-                      "name": "search",
-                      "in": "query",
-                      "description": "Busca pelo título do vídeo, usando apenas uma palavra-chave é suficiente. Exemplo: javascript",
-                      "required": false,
-                      "type": "string"
+                        "name": "search",
+                        "in": "query",
+                        "description": "Busca pelo título do vídeo, usando apenas uma palavra-chave é suficiente. Exemplo: javascript",
+                        "required": false,
+                        "type": "string"
                     },
                     {
-                      "name": "page",
-                      "in": "query",
-                      "description": "Paginação da lista de vídeos, começando da página 0 e mostrando 5 vídeos cada",
-                      "required": false,
-                      "type": "number"
+                        "name": "page",
+                        "in": "query",
+                        "description": "Paginação da lista de vídeos, começando da página 0 e mostrando 5 vídeos cada",
+                        "required": false,
+                        "type": "number"
                     }
-                  ],
+                ],
                 "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
@@ -275,7 +283,7 @@
                     {
                         "name": "categoria_id",
                         "in": "path",
-                        "description": "Id da categoria",
+                        "description": "Id da categoria, em número inteiro",
                         "required": true,
                         "type": "integer",
                         "maximum": 1000,
@@ -509,7 +517,15 @@
                 "produces": ["application/json"],
                 "responses": {
                     "200": {
-                        "description": "Ok"
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Categorias"
+                                }
+                            }
+                        }
                     },
                     "500": {
                         "description": "Internal Error Server"
@@ -526,7 +542,15 @@
                 "produces": ["application/json"],
                 "responses": {
                     "200": {
-                        "description": "Ok"
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuarios"
+                                }
+                            }
+                        }
                     },
                     "500": {
                         "description": "Internal Error Server"
@@ -741,20 +765,20 @@
                 "produces": ["application/json"],
                 "parameters": [
                     {
-                      "name": "email",
-                      "in": "body",
-                      "description": "O email com o qual o usuário foi criado",
-                      "required": true,
-                      "type": "string"
+                        "name": "email",
+                        "in": "body",
+                        "description": "O email com o qual o usuário foi criado",
+                        "required": true,
+                        "type": "string"
                     },
                     {
-                      "name": "senha",
-                      "in": "body",
-                      "description": "A senha com a qual o usuário foi criado",
-                      "required": true,
-                      "type": "string"
+                        "name": "senha",
+                        "in": "body",
+                        "description": "A senha com a qual o usuário foi criado",
+                        "required": true,
+                        "type": "string"
                     }
-                  ],
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -774,17 +798,23 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "Ok",
+                        "headers": {
+                            "Authorization": {
+                                "type": "string",
+                                "description": "Token JWT gerado para usuário credenciado"
+                            }
+                        },
                         "content": {
-                            "text/plain:": {
+                            "application/json": {
                                 "schema": {
-                                    "type": "string",
+                                    "type": "object",
                                     "$ref": "#/components/schemas/Token"
                                 }
                             }
                         }
                     },
-                    "400": {
+                    "401": {
                         "description": "Este email não está cadastrado!"
                     },
                     "500": {
@@ -801,7 +831,7 @@
                 "operationId": "logoutUsuario",
                 "produces": ["application/json"],
                 "responses": {
-                    "200": {
+                    "204": {
                         "description": "Ok"
                     },
                     "401": {
@@ -878,8 +908,13 @@
                     }
                 }
             },
-            "Token" : {
-                "type": "string"
+            "Token": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
             }
         },
         "securitySchemes": {
