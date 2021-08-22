@@ -85,8 +85,10 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
-                                    "$ref": "#/components/schemas/Videos"
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Videos"
+                                    }
                                 }
                             }
                         }
@@ -105,6 +107,7 @@
                 "description": "Rota resonsável por cadastrar um novo vídeo",
                 "operationId": "criaVideo",
                 "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -157,13 +160,10 @@
                         "name": "id",
                         "in": "path",
                         "description": "Id do vídeo",
-                        "required": true,
-                        "type": "integer",
-                        "maximum": 1000,
-                        "minimum": 1,
-                        "format": "int64"
+                        "required": true
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -202,6 +202,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -259,6 +260,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok"
@@ -291,6 +293,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -319,6 +322,7 @@
                 "description": "Retorna uma lista de categorias cadastradas",
                 "operationId": "pegaTodasAsCategorias",
                 "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -345,6 +349,7 @@
                 "description": "Rota resonsável por cadastrar uma nova categoria",
                 "operationId": "criaCategoria",
                 "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -402,6 +407,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -440,6 +446,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -495,6 +502,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok"
@@ -515,6 +523,7 @@
                 "description": "Retorna uma lista de categorias sem autenticação",
                 "operationId": "pegaTodasAsCategorias",
                 "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -540,6 +549,7 @@
                 "description": "Retorna uma lista de usuários sem autenticação",
                 "operationId": "pegaTodosOsUsuarios",
                 "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -565,6 +575,7 @@
                 "description": "Retorna uma lista de usuários cadastrados",
                 "operationId": "pegaTodosOsUsuarios",
                 "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -649,6 +660,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -687,6 +699,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -743,6 +756,7 @@
                         "format": "int64"
                     }
                 ],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "200": {
                         "description": "Ok"
@@ -814,6 +828,7 @@
                 "description": "Rota resonsável por fazer logout de um  usuário com credenciais autenticadas",
                 "operationId": "logoutUsuario",
                 "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
                 "responses": {
                     "204": {
                         "description": "Ok"
