@@ -27,6 +27,10 @@
         {
             "name": "usuarios",
             "description": "Acesse as operações referentes aos usuários"
+        },
+        {
+            "name": "auth",
+            "description": "Acesse as operações de autenticação"
         }
     ],
     "paths": {
@@ -772,7 +776,7 @@
         },
         "/login": {
             "post": {
-                "tags": ["usuarios"],
+                "tags": ["auth"],
                 "summary": "Loga usuário e recebe um token de autenticação",
                 "description": "Rota resonsável por logar um  usuário com credenciais autenticadas",
                 "operationId": "logaUsuario",
@@ -823,7 +827,7 @@
         },
         "/logout": {
             "get": {
-                "tags": ["usuarios"],
+                "tags": ["auth"],
                 "summary": "Desloga usuário e invalida token de autenticação",
                 "description": "Rota resonsável por fazer logout de um  usuário com credenciais autenticadas",
                 "operationId": "logoutUsuario",

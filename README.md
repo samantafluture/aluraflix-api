@@ -117,9 +117,18 @@ E buscas como `query string`:
 
 ## Em construção
 
-- [ ] Testes unitários para modelos e controllers
-- [ ] Testes de integração
-- [ ] Documentação
+- [x] Testes unitários para modelos e controllers
+- [x] Testes de integração
+- [x] Documentação
 - [ ] Deploy
 - [ ] Integração com Front-end
 
+## Documentação
+
+Acesse a rota `/api-docs/` no localhost.
+
+Para se autenticar, crie um usuário (`/usuarios` com método `POST`) e depois faça um login (`/login` com método `POST`).
+
+Um token será gerado e enviado via header da requisição. Copie e cole este token na autenticação padrão do Swagger para acessar todas as rotas.
+
+![swagger](https://github.com/samantafluture/aluraflix-api/blob/main/public/swagger.png?raw=true)
