@@ -9,10 +9,6 @@ describe('Autenticação', () => {
         await truncate();
     });
 
-    it('deve listar vídeos sem autenticação', async () => {
-        const response = await request(app).get('/videos/free');
-        expect(response.status).toBe(200);
-    });
     it('deve criar usuário ao preencher campos corretamente', async () => {
         const response = await request(app).post('/usuarios').send({
             nome: 'Maria Silva',
@@ -32,6 +28,7 @@ describe('Autenticação', () => {
     });
     it('deve logar usuário com credenciais válidas', async () => {
         const usuario = await factory.create('Usuarios', {
+            email: 'samuca@email.com',
             senha: '12345678'
         });
         const response = await request(app).post('/login').send({
@@ -43,6 +40,7 @@ describe('Autenticação', () => {
     });
     it('deve enviar um token caso autenticado', async () => {
         const usuario = await factory.create('Usuarios', {
+            email: 'mario@email.com',
             senha: '12345678'
         });
         const payload = { id: usuario.id };
