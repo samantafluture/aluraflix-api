@@ -6,6 +6,15 @@ const videosServices = new Services('Videos');
 const { Op } = Sequelize;
 
 class VideoController {
+    static async pegaTodosOsVideosSemAutenticar(req, res) {
+        try {
+            const todosOsVideos = await videosServices.pegaTodosOsRegistros();
+            return res.status(200).json(todosOsVideos);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
     static async pegaTodosOsVideos(req, res) {
         const where = {};
 

@@ -5,6 +5,7 @@ const { CategoriaController } = require('../controllers');
 const router = Router();
 
 router
+    .get('/categorias/free', CategoriaController.pegaTodasAsCategorias)
     .get(
         '/categorias',
         autenticaUsuario.bearer,

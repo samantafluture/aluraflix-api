@@ -1,6 +1,8 @@
 const request = require('supertest');
+const jwt = require('jsonwebtoken');
 const app = require('../../api/app');
 const truncate = require('../utils/truncate');
+const factory = require('../factories');
 
 describe('Rotas', () => {
     beforeEach(async () => {

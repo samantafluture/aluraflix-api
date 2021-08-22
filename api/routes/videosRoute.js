@@ -5,7 +5,7 @@ const { VideoController } = require('../controllers');
 const router = Router();
 
 router
-    .get('/videos/free', VideoController.pegaTodosOsVideos)
+    .get('/videos/free', VideoController.pegaTodosOsVideosSemAutenticar)
     .get('/videos', autenticaUsuario.bearer, VideoController.pegaTodosOsVideos)
     .get(
         '/videos/:id',

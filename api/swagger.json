@@ -1,0 +1,893 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Aluraflix API",
+        "description": "API da Aluraflix contendo vídeos, categorias de vídeos e usuários.",
+        "termsOfService": "http://localhost:3000/terms",
+        "version": "1.0.0",
+        "contact": {
+            "email": "samantafluture@gmail.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "API em ambiente de desenvolvimento"
+        }
+    ],
+    "tags": [
+        {
+            "name": "videos",
+            "description": "Acesse as operações referentes aos vídeos"
+        },
+        {
+            "name": "categorias",
+            "description": "Acesse as operações referentes às categorias de vídeos"
+        },
+        {
+            "name": "usuarios",
+            "description": "Acesse as operações referentes aos usuários"
+        }
+    ],
+    "paths": {
+        "/videos/free": {
+            "get": {
+                "tags": ["videos"],
+                "summary": "Lista de vídeos",
+                "description": "Retorna uma lista de vídeos sem autenticação",
+                "operationId": "pegaTodosOsVideosSemAutenticar",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/videos/": {
+            "get": {
+                "tags": ["videos"],
+                "summary": "Lista de vídeos cadastrados com opção de busca e paginação",
+                "description": "Retorna uma lista de vídeos cadastrados. Pode usar as querys: 'search' para buscar por uma palavra-chave no título dos vídeos; 'page' para visualizar a lista paginada", 
+                "operationId": "pegaTodosOsVideos",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                      "name": "search",
+                      "in": "query",
+                      "description": "Busca pelo título do vídeo, usando apenas uma palavra-chave é suficiente. Exemplo: javascript",
+                      "required": false,
+                      "type": "string"
+                    },
+                    {
+                      "name": "page",
+                      "in": "query",
+                      "description": "Paginação da lista de vídeos, começando da página 0 e mostrando 5 vídeos cada",
+                      "required": false,
+                      "type": "number"
+                    }
+                  ],
+                "security": [{ "bearerAuth": [] }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Videos"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["videos"],
+                "summary": "Cadastro de vídeo",
+                "description": "Rota resonsável por cadastrar um novo vídeo",
+                "operationId": "criaVideo",
+                "produces": ["application/json"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Videos"
+                            }
+                        },
+                        "examples": {
+                            "Videos": {
+                                "value": {
+                                    "titulo": "Criando documentação com Swagger e Node.js",
+                                    "descricao": "Nesse vídeo iremos desenvolver a documentação de uma aplicação com Node.js e o pacote swagger-ui-express",
+                                    "url": "https://www.youtube.com/watch?v=WhFx2heoFrA&t",
+                                    "categoria_id": "3"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Videos"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/videos/{id}": {
+            "get": {
+                "tags": ["videos"],
+                "summary": "Lista vídeo pelo Id",
+                "description": "Retorna o vídeo do Id passado em formato de número inteiro",
+                "operationId": "pegaVideoPeloId",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do vídeo",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Videos"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["videos"],
+                "summary": "Atualiza vídeo pelo Id",
+                "description": "Rota resonsável por atualizar informações de um vídeo cadastrado",
+                "operationId": "atualizaVideo",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Videos"
+                            }
+                        },
+                        "examples": {
+                            "Usuarios": {
+                                "value": {
+                                    "titulo": "Criando documentação com Swagger e Node.js",
+                                    "descricao": "Nesse vídeo iremos desenvolver a documentação de uma aplicação com Node.js e o pacote swagger-ui-express",
+                                    "url": "https://www.youtube.com/watch?v=WhFx2heoFrA&t",
+                                    "categoria_id": "3"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Videos"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["videos"],
+                "summary": "Deleta vídeo pelo Id",
+                "description": "Rota resonsável por remover um vídeo cadastrado da lista",
+                "operationId": "removeVideo",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/categorias/{categoria_id}/videos": {
+            "get": {
+                "tags": ["videos", "categorias"],
+                "summary": "Lista de vídeos por categoria",
+                "description": "Retorna uma lista de vídeos cadastrados a partir do Id de uma determinada categoria",
+                "operationId": "pegaVideosPorCategoria",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "categoria_id",
+                        "in": "path",
+                        "description": "Id da categoria",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Videos"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/categorias": {
+            "get": {
+                "tags": ["categorias"],
+                "summary": "Lista de categorias cadastradas",
+                "description": "Retorna uma lista de categorias cadastradas",
+                "operationId": "pegaTodasAsCategorias",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Categorias"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["categorias"],
+                "summary": "Cadastro de categoria",
+                "description": "Rota resonsável por cadastrar uma nova categoria",
+                "operationId": "criaCategoria",
+                "produces": ["application/json"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Categorias"
+                            }
+                        },
+                        "examples": {
+                            "Categorias": {
+                                "value": {
+                                    "titulo": "javacript",
+                                    "cor": "#ff0000"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Categorias"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/categorias/{id}": {
+            "get": {
+                "tags": ["categorias"],
+                "summary": "Lista categoria pelo Id",
+                "description": "Retorna a categoria do Id passado em formato de número inteiro",
+                "operationId": "pegaCategoriaPeloId",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da categoria",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Categorias"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["categorias"],
+                "summary": "Atualiza categoria pelo Id",
+                "description": "Rota resonsável por atualizar informações de uma categoria cadastrada",
+                "operationId": "atualizaCategoria",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Categorias"
+                            }
+                        },
+                        "examples": {
+                            "Categorias": {
+                                "value": {
+                                    "titulo": "javacript",
+                                    "cor": "#ff0000"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Categorias"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["categorias"],
+                "summary": "Deleta categoria pelo Id",
+                "description": "Rota resonsável por remover uma categoria cadastrada da lista",
+                "operationId": "removeCategoria",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/categorias/free": {
+            "get": {
+                "tags": ["categorias"],
+                "summary": "Lista de categorias",
+                "description": "Retorna uma lista de categorias sem autenticação",
+                "operationId": "pegaTodasAsCategorias",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/usuarios/free": {
+            "get": {
+                "tags": ["usuarios"],
+                "summary": "Lista de usuários",
+                "description": "Retorna uma lista de usuários sem autenticação",
+                "operationId": "pegaTodosOsUsuarios",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/usuarios": {
+            "get": {
+                "tags": ["usuarios"],
+                "summary": "Lista de usuários cadastrados",
+                "description": "Retorna uma lista de usuários cadastrados",
+                "operationId": "pegaTodosOsUsuarios",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuarios"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["usuarios"],
+                "summary": "Cadastro de usuário",
+                "description": "Rota resonsável por cadastrar um novo usuário",
+                "operationId": "criaUsuario",
+                "produces": ["application/json"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuarios"
+                            }
+                        },
+                        "examples": {
+                            "Usuarios": {
+                                "value": {
+                                    "nome": "John Snow",
+                                    "email": "snow@north.com",
+                                    "senha": "iamstark666"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuarios"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Já existe um usuário com este email"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/usuarios/{id}": {
+            "get": {
+                "tags": ["usuarios"],
+                "summary": "Lista usuário pelo Id",
+                "description": "Retorna o usuário do Id passado em formato de número inteiro",
+                "operationId": "pegaUsuarioPeloId",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuarios"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["usuarios"],
+                "summary": "Atualiza usuário pelo Id",
+                "description": "Rota resonsável por atualizar informações de um usuário cadastrado",
+                "operationId": "atualizaUsuario",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuarios"
+                            }
+                        },
+                        "examples": {
+                            "Usuarios": {
+                                "value": {
+                                    "nome": "John Snow",
+                                    "email": "snow@north.com",
+                                    "senha": "iamstark666"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuarios"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["usuarios"],
+                "summary": "Deleta usuário pelo Id",
+                "description": "Rota resonsável por remover um usuário cadastrado da lista",
+                "operationId": "removeUsuario",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "type": "integer",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "401": {
+                        "description": "Não autorizado, Token JWT inválido ou Token JWT expirado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": ["usuarios"],
+                "summary": "Loga usuário e recebe um token de autenticação",
+                "description": "Rota resonsável por logar um  usuário com credenciais autenticadas",
+                "operationId": "logaUsuario",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                      "name": "email",
+                      "in": "body",
+                      "description": "O email com o qual o usuário foi criado",
+                      "required": true,
+                      "type": "string"
+                    },
+                    {
+                      "name": "senha",
+                      "in": "body",
+                      "description": "A senha com a qual o usuário foi criado",
+                      "required": true,
+                      "type": "string"
+                    }
+                  ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        },
+                        "examples": {
+                            "Usuarios": {
+                                "value": {
+                                    "email": "snow@north.com",
+                                    "senha": "iamstark666"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "text/plain:": {
+                                "schema": {
+                                    "type": "string",
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Este email não está cadastrado!"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "get": {
+                "tags": ["usuarios"],
+                "summary": "Desloga usuário e invalida token de autenticação",
+                "description": "Rota resonsável por fazer logout de um  usuário com credenciais autenticadas",
+                "operationId": "logoutUsuario",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    },
+                    "500": {
+                        "description": "Internal Error Server"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Usuarios": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Videos": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "titulo": {
+                        "type": "string"
+                    },
+                    "descricao": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "categoria_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Categorias": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "titulo": {
+                        "type": "string"
+                    },
+                    "cor": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Token" : {
+                "type": "string"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

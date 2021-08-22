@@ -6,7 +6,7 @@ const BearerStrategy = require('passport-http-bearer').Strategy;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const models = require('../models');
-const blacklist = require('../redis/manipulaBlacklist');
+const blacklist = require('../database/redis/manipulaBlacklist');
 const { InvalidArgumentError } = require('../helpers/manipulaErros');
 
 function verificaUsuario(usuario) {

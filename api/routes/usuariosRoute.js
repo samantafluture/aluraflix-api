@@ -5,6 +5,7 @@ const { UsuarioController } = require('../controllers');
 const router = Router();
 
 router
+    .get('/usuarios/free', UsuarioController.pegaTodosOsUsuarios)
     .get(
         '/usuarios',
         autenticaUsuario.bearer,

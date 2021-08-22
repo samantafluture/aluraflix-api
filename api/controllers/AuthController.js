@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
-const blacklist = require('../redis/manipulaBlacklist');
+const blacklist = require('../database/redis/manipulaBlacklist');
 
 function criaTokenJWT(usuario) {
     const payload = {
