@@ -55,7 +55,7 @@
                 }
             }
         },
-        "/videos/": {
+        "/videos": {
             "get": {
                 "tags": ["videos"],
                 "summary": "Lista de vídeos cadastrados com opção de busca e paginação",
@@ -763,22 +763,6 @@
                 "description": "Rota resonsável por logar um  usuário com credenciais autenticadas",
                 "operationId": "logaUsuario",
                 "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "email",
-                        "in": "body",
-                        "description": "O email com o qual o usuário foi criado",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "senha",
-                        "in": "body",
-                        "description": "A senha com a qual o usuário foi criado",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
