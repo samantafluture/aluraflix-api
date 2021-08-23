@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-const factory = require('../factories');
+const factory = require('../utils/factories');
 
 describe('Vídeos', () => {
     it('deve validar que o nome do vídeo não é vazio', async () => {

@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const models = require('../../api/models');
 const truncate = require('../utils/truncate');
-const factory = require('../factories');
+const factory = require('../utils/factories');
 
 describe('Usuários', () => {
     beforeEach(async () => {

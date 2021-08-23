@@ -1,6 +1,6 @@
 const truncate = require('../utils/truncate');
 const Services = require('../../api/services/Services');
-const factory = require('../factories');
+const factory = require('../utils/factories');
 
 describe('criaRegistro()', () => {
     let usuariosService;
@@ -82,8 +82,6 @@ describe('encontraEContaRegistros()', () => {
 
     beforeEach(async () => {
         videosService = new Services('Videos');
-
-        // await truncate();
     });
 
     it('deve ser possível listar vídeos pelo id da categoria', async () => {

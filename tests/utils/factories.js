@@ -1,6 +1,6 @@
 const faker = require('faker');
 const { factory } = require('factory-girl');
-const { Usuarios, Categorias, Videos } = require('../api/models');
+const { Usuarios, Categorias, Videos } = require('../../api/models');
 
 factory.define('Usuarios', Usuarios, {
     nome: faker.name.findName(),

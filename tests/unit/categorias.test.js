@@ -1,5 +1,5 @@
 const truncate = require('../utils/truncate');
-const factory = require('../factories');
+const factory = require('../utils/factories');
 
 describe('Caregorias', () => {
     beforeEach(async () => {
