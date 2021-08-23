@@ -41,6 +41,19 @@ Acesse: [Aluraflix API Documentação](https://aluraflix-api-samfluture.herokuap
 
 ## Como usar
 
+### Tutorial passo a passo de como criar estar API do zero
+
+1. [Preparar ambiente](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/01-PrepararAmbiente.md)
+2. [Criar modelos e pouplar banco de dados](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/02-CriarModelosPopularBanco.md)
+3. [Criar services, controllers e rotas](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/03-CriarServicesControllersRotas.md)
+4. [Criar novas tabelas e associações](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/04-CriarNovasTabelasAssociacoes.md)
+5. [Criar requisições relacionais e buscas](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/05-CriarRequisicoesRelacionaisBuscas.md)
+6. [Fazer validações nos modelos](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/06-FazerValidacoesModelos.md)
+7. [Fazer paginação nos controllers](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/07-FazerPaginacaoControllers.md)
+8. [Criar sistema de usuário, login e autenticação](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/08-CriarUsuariosLoginAutenticacao.md)
+9. [Testes unitários e de integração](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/09-TestesUnitariosIntegracao.md)
+10. [Deploy no Heroku](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/10-DeployHeroku.md)
+
 ### Instalar pacotes e dependências
 
 1. Iniciar projeto com npm: `npm init -y`
