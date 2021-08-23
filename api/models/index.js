@@ -4,8 +4,6 @@
 /* eslint-disable no-path-concat */
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable prefer-template */
-require('dotenv').config();
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -14,13 +12,6 @@ const basename = path.basename(__filename);
 // const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js');
 const db = {};
-
-// const sequelize = new Sequelize(
-//     config.database,
-//     config.username,
-//     config.password,
-//     config
-// );
 
 let sequelize;
 if (config.use_env_variable) {
@@ -33,7 +24,6 @@ if (config.use_env_variable) {
         config
     );
 }
-
 
 fs.readdirSync(__dirname)
     .filter((file) => {
