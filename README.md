@@ -11,7 +11,7 @@ Acesse: [Aluraflix API](https://aluraflix-api-samfluture.herokuapp.com/)
 
 ![json](https://github.com/samantafluture/aluraflix-api/blob/main/public/json.png?raw=true)
 
-## Rotas autenticadas:
+### Rotas autenticadas:
 
 Acesse a rota `/api-docs/`.
 
@@ -41,7 +41,7 @@ Acesse: [Aluraflix API Documentação](https://aluraflix-api-samfluture.herokuap
 
 ## Como usar
 
-### Tutorial passo a passo de como criar estar API do zero
+### Tutorial passo a passo de como criar esta API do zero
 
 1. [Preparar ambiente](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/01-PrepararAmbiente.md)
 2. [Criar modelos e pouplar banco de dados](https://github.com/samantafluture/aluraflix-api/blob/main/public/tutorial/02-CriarModelosPopularBanco.md)
@@ -118,7 +118,7 @@ module.exports = {
 3. Visualizar se a database foi criada: `show databases;`
 4. Conectar a database com o projeto alterando o arquivo config.json, incluindo seu `username`, `password` e `database` usados na área de `development`
 
-## Modelos
+### Modelos
 
 |    | Categorias |        |
 |----|------------|--------|
@@ -134,7 +134,7 @@ module.exports = {
 |    | url          | string |
 | FK | categoria_id | ID     |
 
-## Validações
+### Validações
 
 - Todos os campos são obrigatórios e precisam ser preenchidos
 
