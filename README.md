@@ -1,5 +1,7 @@
 # API Rest com Node.js, Express, Sequelize e MySQL
 
+API Rest criada para o web app Aluraflix. Inclui autenticação via login com token.
+
 ## Tecnologias
 
 - Node.js, Express
