@@ -1,16 +1,20 @@
+/* eslint-disable strict */
+/* eslint-disable lines-around-directive */
+/* eslint-disable import/newline-after-import */
 /* eslint-disable global-require */
 /* eslint-disable arrow-body-style */
 /* eslint-disable operator-linebreak */
 /* eslint-disable no-path-concat */
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable prefer-template */
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-
 const basename = path.basename(__filename);
-// const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.js');
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;
