@@ -33,7 +33,9 @@ Acesse: [Aluraflix API Documentação](https://aluraflix-api-samfluture.herokuap
 - Sequelize
 - MySQL 
 - Redis
+- Passport/JWT
 - Postman/Insomnia
+- Jest/Supertest
 - Swagger UI
 - Heroku
 

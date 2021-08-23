@@ -2,7 +2,7 @@
 
 ## Tutorial
 
-1. Preparar do Ambiente
+1. Preparar ambiente
 2. Criar modelos e pouplar banco de dados
 3. Criar services, controllers e rotas
 4. Criar novas tabelas e associações
@@ -11,6 +11,7 @@
 7. Fazer paginação nos controllers
 8. Criar sistema de usuário, login e autenticação
 9. Testes unitários e de integração
+10. Deploy no Heroku
 
 ## Requisitos
 
@@ -69,9 +70,14 @@
 ### Testes
 
 - [x] Testar rotas via Postman
-- [ ] Testes unitários para modelos e controllers
-- [ ] Testes de integração
+- [x] Testes unitários 
+- [x] Testes de integração
+
+## Build
+
+- [x] Documentação
+- [x] Deploy
 
 ## Integração com frontend
-
+ 
 - [ ] Fetch API via Reactjs
