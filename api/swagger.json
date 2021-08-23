@@ -853,7 +853,7 @@
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "integer"
                     },
                     "nome": {
                         "type": "string"
@@ -870,7 +870,7 @@
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "integer"
                     },
                     "titulo": {
                         "type": "string"
@@ -890,7 +890,7 @@
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "integer"
                     },
                     "titulo": {
                         "type": "string"
