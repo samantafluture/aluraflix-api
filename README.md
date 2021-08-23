@@ -1,5 +1,30 @@
 # API Rest com Node.js, Express, Sequelize e MySQL
 
+## API no ar:
+
+[Aluraflix API](https://aluraflix-api-samfluture.herokuapp.com/)
+
+### Rotas livres de autenticação:
+
+[/videos/free](https://aluraflix-api-samfluture.herokuapp.com/videos/free)
+[/categorias/free](https://aluraflix-api-samfluture.herokuapp.com/categorias/free)
+
+![json](https://github.com/samantafluture/aluraflix-api/blob/main/public/json.png?raw=true)
+
+## Rotas autenticadas:
+
+Acesse a rota `/api-docs/`..
+
+Para se autenticar, crie um usuário (`/usuarios` com método `POST`) e depois faça um login (`/login` com método `POST`).
+
+Um token será gerado e enviado via header da requisição. Copie e cole este token na autenticação padrão do Swagger para acessar todas as rotas.
+
+### Documentação da API:
+
+[Aluraflix API Documentação](https://aluraflix-api-samfluture.herokuapp.com/api-docs/)
+
+![swagger](https://github.com/samantafluture/aluraflix-api/blob/main/public/swagger.png?raw=true)
+
 ## Tecnologias
 
 - Node.js
@@ -9,6 +34,7 @@
 - MySQL 
 - Redis
 - Postman/Insomnia
+- Heroku
 
 ## Preparar o ambiente
 
@@ -96,39 +122,11 @@ module.exports = {
 
 - Todos os campos são obrigatórios e precisam ser preenchidos
 
-## API no ar
-
-Acesse [/categorias](http://localhost:3000/categorias) ou [/videos](http://localhost:3000/videos) no seu localhost.
-
-As rotas configuradas são:
-- get (pegar todos)
-- get by id (pegar pelo id)
-- post (publicar)
-- put (atualizar)
-- delete (remover)
-
-Além disso, há rotas agrupadas e relacionadas, como:
-- rota `/categorias/:id/videos`(pegar vídeos pelo id da categoria)
-
-E buscas como `query string`:
-- rota `/videos/search?=titulo` (buscar vídeos pelo título)
-
-![json](https://github.com/samantafluture/aluraflix-api/blob/main/public/json.png?raw=true)
-
 ## Em construção
 
 - [x] Testes unitários para modelos e controllers
 - [x] Testes de integração
 - [x] Documentação
-- [ ] Deploy
+- [x] Deploy
 - [ ] Integração com Front-end
 
-## Documentação
-
-Acesse a rota `/api-docs/` no localhost.
-
-Para se autenticar, crie um usuário (`/usuarios` com método `POST`) e depois faça um login (`/login` com método `POST`).
-
-Um token será gerado e enviado via header da requisição. Copie e cole este token na autenticação padrão do Swagger para acessar todas as rotas.
-
-![swagger](https://github.com/samantafluture/aluraflix-api/blob/main/public/swagger.png?raw=true)
