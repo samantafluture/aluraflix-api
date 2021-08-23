@@ -882,7 +882,7 @@
                         "type": "string"
                     },
                     "categoria_id": {
-                        "type": "string"
+                        "type": "integer"
                     }
                 }
             },
