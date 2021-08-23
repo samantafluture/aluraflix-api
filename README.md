@@ -1,5 +1,14 @@
 # API Rest com Node.js, Express, Sequelize e MySQL
 
+## Tecnologias
+
+- Node.js, Express
+- Sequelize, MySQL, Redis
+- Passport, JWT
+- Insomnia, Jest, Supertest
+- Swagger UI
+- Heroku
+
 ## API no ar
 
 Acesse: [Aluraflix API](https://aluraflix-api-samfluture.herokuapp.com/)
@@ -11,7 +20,7 @@ Acesse: [Aluraflix API](https://aluraflix-api-samfluture.herokuapp.com/)
 
 ![json](https://github.com/samantafluture/aluraflix-api/blob/main/public/json.png?raw=true)
 
-### Rotas autenticadas:
+### Rotas autenticadas
 
 Acesse a rota `/api-docs/`.
 
@@ -19,25 +28,11 @@ Para se autenticar, crie um usuário (`/usuarios` com método `POST`) e depois f
 
 Um token será gerado e enviado via header da requisição. Copie e cole este token na autenticação padrão do Swagger para acessar todas as rotas.
 
-### Documentação da API:
+### Documentação da API
 
 Acesse: [Aluraflix API Documentação](https://aluraflix-api-samfluture.herokuapp.com/api-docs/)
 
 ![swagger](https://github.com/samantafluture/aluraflix-api/blob/main/public/swagger.png?raw=true)
-
-## Tecnologias
-
-- Node.js
-- NPM
-- Express
-- Sequelize
-- MySQL 
-- Redis
-- Passport/JWT
-- Postman/Insomnia
-- Jest/Supertest
-- Swagger UI
-- Heroku
 
 ## Como usar
 
