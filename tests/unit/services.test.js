@@ -88,17 +88,60 @@ describe('encontraEContaRegistros()', () => {
         const categoria = await factory.create('Categorias', {
             id: '4'
         });
-        const video1 = await factory.create('Videos', {
+        await factory.create('Videos', {
             categoria_id: categoria.id
         });
-        const video2 = await factory.create('Videos', {
+        await factory.create('Videos', {
             categoria_id: categoria.id
         });
         const listaVideos = await videosService.encontraEContaRegistros({
             categoria_id: categoria.id
         });
 
-        console.log(listaVideos, categoria, video1, video2);
         expect(listaVideos).toHaveProperty('count', 2);
+    });
+});
+
+describe('pegaTodosOsRegistros()', () => {
+    let videosService;
+
+    beforeEach(async () => {
+        await truncate();
+
+        videosService = new Services('Videos');
+    });
+
+    it('deve ser possível pegar todos os vídeos', async () => {
+        const categoria = await factory.create('Categorias', {
+            id: '1'
+        });
+        await factory.create('Videos', {
+            categoria_id: categoria.id
+        });
+        await factory.create('Videos', {
+            categoria_id: categoria.id
+        });
+        await factory.create('Videos', {
+            categoria_id: categoria.id
+        });
+        const listaVideos = await videosService.pegaTodosOsRegistros();
+
+        expect(listaVideos).toHaveLength(3);
+    });
+    it('deve ser possível buscar vídeos pelo título', async () => {
+        const categoria = await factory.create('Categorias', {
+            id: '1'
+        });
+        await factory.create('Videos', {
+            categoria_id: categoria.id
+        });
+        const video1 = await factory.create('Videos', {
+            titulo: 'teste'
+        });
+        const videoBuscado = await videosService.pegaTodosOsRegistros({
+            titulo: video1.titulo
+        });
+
+        expect(videoBuscado).toHaveReturnedWith('teste');
     });
 });
