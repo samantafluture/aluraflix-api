@@ -17,7 +17,7 @@ factory.define('Videos', Videos, {
     titulo: faker.lorem.words,
     descricao: faker.lorem.sentences,
     url: faker.internet.url,
-    categoria_id: '1'
+    categoria_id: faker.datatype.number
 });
 
 module.exports = factory;
