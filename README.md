@@ -1,19 +1,19 @@
 # API Rest com Node.js, Express, Sequelize e MySQL
 
-## API no ar:
+## API no ar
 
-[Aluraflix API](https://aluraflix-api-samfluture.herokuapp.com/)
+Acesse: [Aluraflix API](https://aluraflix-api-samfluture.herokuapp.com/)
 
-### Rotas livres de autenticação:
+### Rotas livres de autenticação
 
-[/videos/free](https://aluraflix-api-samfluture.herokuapp.com/videos/free)
-[/categorias/free](https://aluraflix-api-samfluture.herokuapp.com/categorias/free)
+- [/videos/free](https://aluraflix-api-samfluture.herokuapp.com/videos/free)
+- [/categorias/free](https://aluraflix-api-samfluture.herokuapp.com/categorias/free)
 
 ![json](https://github.com/samantafluture/aluraflix-api/blob/main/public/json.png?raw=true)
 
 ## Rotas autenticadas:
 
-Acesse a rota `/api-docs/`..
+Acesse a rota `/api-docs/`.
 
 Para se autenticar, crie um usuário (`/usuarios` com método `POST`) e depois faça um login (`/login` com método `POST`).
 
@@ -21,7 +21,7 @@ Um token será gerado e enviado via header da requisição. Copie e cole este to
 
 ### Documentação da API:
 
-[Aluraflix API Documentação](https://aluraflix-api-samfluture.herokuapp.com/api-docs/)
+Acesse: [Aluraflix API Documentação](https://aluraflix-api-samfluture.herokuapp.com/api-docs/)
 
 ![swagger](https://github.com/samantafluture/aluraflix-api/blob/main/public/swagger.png?raw=true)
 
@@ -34,9 +34,10 @@ Um token será gerado e enviado via header da requisição. Copie e cole este to
 - MySQL 
 - Redis
 - Postman/Insomnia
+- Swagger UI
 - Heroku
 
-## Preparar o ambiente
+## Como usar
 
 ### Instalar pacotes e dependências
 
