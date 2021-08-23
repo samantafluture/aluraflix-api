@@ -1,9 +1,8 @@
 const request = require('supertest');
 const app = require('../../api/app');
 const truncate = require('../utils/truncate');
-const factory = require('../utils/factories');
 
-describe('Rotas', () => {
+describe('Controllers', () => {
     beforeEach(async () => {
         await truncate();
     });
