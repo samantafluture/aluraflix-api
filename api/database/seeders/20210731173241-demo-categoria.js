@@ -1,5 +1,4 @@
 module.exports = {
-    // eslint-disable-next-line no-unused-vars
     up: (queryInterface, Sequelize) => queryInterface.bulkInsert(
         'Categorias',
         [
