@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./api/server.js --ignore tests",
-    "build": "sequelize db:migrate",
     "pretest": "NODE_ENV=test sequelize db:migrate",
     "test": "NODE_ENV=test jest",
     "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
