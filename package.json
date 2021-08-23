@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./api/server.js --ignore tests",
+    "start": "node ./api/server.js --ignore tests",
     "pretest": "NODE_ENV=test sequelize db:migrate",
     "test": "NODE_ENV=test jest",
     "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
