@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const models = require('../../api/models');
-const { Usuarios } = require('../../api/models');
 const truncate = require('../utils/truncate');
 const factory = require('../factories');
 

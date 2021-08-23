@@ -36,7 +36,7 @@ describe('Autenticação', () => {
             senha: '12345678'
         });
 
-        expect(response.status).toBe(204);
+        expect(response.status).toBe(200);
     });
     it('deve enviar um token caso autenticado', async () => {
         const usuario = await factory.create('Usuarios', {
