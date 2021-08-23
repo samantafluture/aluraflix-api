@@ -3,7 +3,6 @@ require('dotenv').config({
 });
 
 module.exports = {
-    // eslint-disable-next-line no-undef
     use_env_variable: 'DATABASE_URL'
     // use_env_variable: process.env.DATABASE_URL,
     // username: process.env.DB_USER,
