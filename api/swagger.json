@@ -2,8 +2,8 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Aluraflix API",
-        "description": "API da Aluraflix contendo vídeos, categorias de vídeos e usuários.",
-        "termsOfService": "http://localhost:3000/terms",
+        "description": "API de streaming contendo: vídeos, categorias e usuários",
+        "termsOfService": "https://aluraflix-api-samfluture.herokuapp.com/terms",
         "version": "1.0.0",
         "contact": {
             "email": "samantafluture@gmail.com"
@@ -11,8 +11,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000",
-            "description": "API em ambiente de desenvolvimento"
+            "url": "https://aluraflix-api-samfluture.herokuapp.com/"
         }
     ],
     "tags": [
